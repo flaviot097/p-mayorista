@@ -1,0 +1,47 @@
+.contenedor-card-facturacion-afip {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../img/afip.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.form-facturacion {
+  width: 30vh;
+}
+.a-facturar {
+  margin-left: 1vh;
+  width: 95% !important;
+}
+.btn-facturar {
+  margin-top: 12px;
+  width: 100% !important;
+  background-color: rgb(58, 56, 56) !important;
+  color: white;
+  border-radius: 20px;
+  border-color: transparent;
+  margin-bottom: 15px;
+  box-shadow: rgb(126, 123, 123) 0px 0px 8px;
+}
+.btn-facturar:hover {
+  background-color: rgb(26, 25, 25) !important;
+  box-shadow: rgb(58, 56, 56) 0px 0px 8px;
+}
+.nombre-a-facturar,
+.monto-facturar,
+.monto {
+  width: 95%;
+  text-align: center;
+}
+.nombre-a-facturar,
+.monto-facturar {
+  margin-top: 5%;
+  margin-bottom: -0.7% !important;
+}
+.form-facturacion {
+  background-color: rgb(37, 37, 37);
+  padding: 2%;
+  border-radius: 12px;
+  color: aliceblue;
+}

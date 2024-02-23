@@ -1,0 +1,31 @@
+.codigo-producto {
+  padding-top: 1.6%;
+}
+.btn.btn-primary.btn-sm.d-inline-flex.align-items-center {
+  margin-left: 3vh;
+  width: 94%;
+  background-color: rgb(45, 148, 45);
+}
+
+h6#codigo-producto {
+  margin-left: 30% !important;
+}
+.producto-stock {
+  margin-bottom: 0.3vh;
+}
+
+.btn.btn-primary.btn-sm.d-inline-flex.align-items-center.faltante {
+  background-color: rgb(255, 74, 74);
+  color: black;
+}
+
+.btn.btn-primary.btn-sm.d-inline-flex.align-items-center.poco {
+  background-color: rgb(247, 247, 70) !important;
+  color: gray;
+}
+.contenedor-card-productos {
+  display: contents;
+}
+h6#cantidad-producto {
+  margin-left: 30% !important;
+}

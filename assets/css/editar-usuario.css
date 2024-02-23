@@ -1,0 +1,36 @@
+.contrasenia-actual,
+.usuario,
+.contrasenia-nueva {
+  margin-left: 5%;
+}
+.contenedor-card-editar-usuario {
+  background-color: gray;
+  margin: auto;
+  border-radius: 10px;
+}
+.form-crear-usuario {
+  text-align: center;
+  height: 50vh;
+  border-radius: 10px;
+  box-shadow: rgb(126, 123, 123) 0px 0px 8px;
+}
+.btn-actualizar {
+  margin-top: 12px;
+  width: 76% !important;
+  background-color: rgb(58, 56, 56) !important;
+  color: white;
+  border-radius: 20px;
+  border-color: transparent;
+  margin-bottom: 15px;
+  box-shadow: rgb(221, 220, 220) 0px 0px 8px;
+}
+.btn-actualizar:hover {
+  background-color: rgb(26, 25, 25) !important;
+  box-shadow: rgb(58, 56, 56) 0px 0px 8px;
+}
+.conteiner-cuerpo {
+  background-image: url("../img/bg_hero_1.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+}

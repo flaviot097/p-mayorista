@@ -1,0 +1,15 @@
+.contenedor-card-publicaciones-activas {
+  background-color: aqua;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 1%;
+}
+
+div.col-md-6.wow.fadeInUp {
+  width: 45vh;
+  max-width: 70% !important;
+  flex: auto !important;
+}

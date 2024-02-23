@@ -1,0 +1,56 @@
+.conteiner-cuerpo {
+  min-height: 80vh;
+  display: flex;
+  background-image: url("../img/imagen-deposito3.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  justify-content: center;
+}
+.backgaund-imagen {
+  height: 11.5vh;
+}
+.iniciar-session {
+  background-color: aliceblue;
+  height: 30vh !important;
+  margin-top: 20vh;
+  border-radius: 10px;
+  background-image: url(../img/bg_hero_2.svg);
+  background-position: bottom;
+  box-shadow: rgb(145, 144, 144) 0px 0px 8px !important ;
+}
+.formulario-iniciar-sesion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contrasenia-iniciar-session,
+.usuario-iniciar-session {
+  width: 94% !important;
+  border-radius: 5px;
+  border-color: transparent;
+}
+.contrasenia-label-iniciar-session,
+.usuario-label-iniciar-session {
+  margin-top: 3%;
+  text-align: center;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+.btn-iniciar-session {
+  margin-top: 13%;
+  border-radius: 13px;
+  background-color: green;
+  color: white;
+  border: transparent;
+  transition: all 0.3s ease-out;
+  width: 94% !important;
+}
+
+.btn-iniciar-session:hover {
+  background-color: rgb(22, 196, 22);
+  box-shadow: rgb(15, 99, 15) 0px 0px 8px;
+}

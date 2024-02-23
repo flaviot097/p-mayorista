@@ -1,0 +1,29 @@
+.codigo-producto {
+  padding-top: 1.6%;
+}
+.btn.btn-primary.btn-sm.d-inline-flex.align-items-center {
+  margin-left: 3vh;
+}
+h6#cantidad-producto {
+  margin-left: 5vh !important ;
+}
+h6#codigo-producto {
+  margin-left: 3vh;
+}
+.producto-stock {
+  margin-bottom: 0.3vh;
+}
+.ventas-recaudacion,
+.ventas-mes {
+  text-align: center;
+  border: black;
+  box-shadow: rgb(145, 144, 144) 0px 0px 8px !important ;
+  margin-top: 5vh;
+  margin-left: 3vh;
+}
+.conteiner-cuerpo {
+  background-image: url("../img/bg_hero_1.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+}

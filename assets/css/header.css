@@ -1,0 +1,8 @@
+button.btn.btn-dark.rounded-pill.usuario-iniciado {
+  height: 5.2vh !important;
+  font-size: 0.8rem !important;
+  padding-top: 9px;
+}
+.usuario-iniciado {
+  height: 28px;
+}
