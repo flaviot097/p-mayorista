@@ -1,5 +1,3 @@
-//console.log(dataFilter);
-
 var contador = 0;
 function reproducirCard() {
   dataFilter.forEach((jsonDatos) => {
@@ -26,7 +24,7 @@ function reproducirCard() {
 }
 
 ////scroll infinito
-
+const btnFiltrado = document.querySelector(".btn.btn-primary.filtrar");
 const cantidadCards = document.querySelectorAll(".wow.fadeInUp");
 console.log(dataFilter.length);
 
@@ -43,12 +41,15 @@ function cargarDivs() {
 
 window.addEventListener("scroll", () => {
   const noCoincide = document.querySelector("p.letras-no-coincide");
-  console.log(noCoincide);
+  const lanzarFiltrado = document.querySelector("#filtrado-exitoso");
 
   if (noCoincide) {
-    console.log("");
+    console.log("no ciocide");
+  } else if (lanzarFiltrado) {
+    console.log("es distinto de 0");
   } else {
     cargarDivs();
+    validar = 0;
   }
 });
 

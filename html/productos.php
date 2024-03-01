@@ -49,7 +49,7 @@
             <form method="GET">
                 <div class="form-filtrar-prod">
                     <label for="producto" id="producto-filtro-letras">Producto: </label>
-                    <input type="text" id="producto-filtro" class="form-control">
+                    <input type="text" id="producto-filtro" class="form-control producto-filtro">
                     <label for="producto" id="distibuidor-filtro-letras">Vendedor:</label>
                     <input type="text" id="distribuidor-filtro" class="form-control">
                 </div>
@@ -206,6 +206,8 @@
 <?php require_once("./footer.php"); ?>
 <script src="../assets/js/reproducir-cartas-prod.js"></script>
 <script src="../assets/js/filtrar.js"></script>
+
+
 
 
 

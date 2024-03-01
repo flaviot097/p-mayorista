@@ -144,3 +144,13 @@ div.form-filtrar-prod {
   margin-right: 10%;
   margin-left: 16%;
 }
+#filtrado-exitoso {
+  text-align: center;
+  color: gray;
+  width: 98vh !important;
+  margin-right: 0px;
+  border-radius: 12px;
+  background: #dbe1d5;
+  box-shadow: 15px 15px 30px #adb4aa, -15px -15px 30px #ffffff;
+  margin-bottom: 15px;
+}
