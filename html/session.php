@@ -19,6 +19,52 @@
 
     <link rel="stylesheet" href="../assets/css/session.css">
 </head>
+<?php
+
+if ($_GET) {
+    if ($_GET['usuario'] !== null || $_GET['usuario'] !== "" && $_GET['password'] !== null || $_GET['password'] !== "") {
+        $dni = $_GET['usuario'];
+        $pass = $_GET['password'];
+
+        $ci = curl_init();
+
+        $url = "http://localhost:4000/validacion/dni/" . $dni;
+
+        curl_setopt($ci, CURLOPT_URL, $url);
+
+        curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+
+        $respuesta = curl_exec($ci);
+
+        if (curl_errno($ci)) {
+            $mensaje_error = curl_error($ci);
+
+        } else {
+
+            curl_close($ci);
+        }
+        ;
+        $respuestaJson = json_decode($respuesta, true);
+        if (!$respuestaJson) {
+            echo '<div loading="lazy" class="no-coinciden" >El DNI ingresado es incorrecto o no existe</div>';
+        } else if ($respuestaJson[0]["contrasenia"] === $pass) {
+            session_start();
+            $_SESSION["usuario"] = $respuestaJson[0]["usuario"];
+            header("Location: estadisticas.php");
+        } else {
+            echo '<div loading="lazy" class="no-coinciden" >Contraseña incorrecta</div>';
+        }
+        ;
+
+
+    }
+    ;
+}
+;
+
+
+
+?>
 
 <body>
     <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
@@ -28,10 +74,10 @@
         <div class="iniciar-session">
             <div class="container-formulario-iniciar-sesion">
                 <form action="" method="get" class="formulario-iniciar-sesion">
-                    <label for="" class="usuario-label-iniciar-session">Usuario</label>
-                    <input class="usuario-iniciar-session"></input>
+                    <label for="" class="usuario-label-iniciar-session">DNI</label>
+                    <input class="usuario-iniciar-session" name="usuario"></input>
                     <label for="" class="contrasenia-label-iniciar-session">Contraseña</label>
-                    <input class="contrasenia-iniciar-session"></input>
+                    <input class="contrasenia-iniciar-session" name="password" type="password"></input>
                     <button type="submit" class="btn-iniciar-session">Iniciar Sesion</button>
                 </form>
             </div>
@@ -40,5 +86,6 @@
 
 </body>
 <?php require_once("./footer.php"); ?>
+<script src="../assets/js/mensajes.js"></script>
 
 </html>

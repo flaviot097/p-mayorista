@@ -54,3 +54,17 @@
   background-color: rgb(22, 196, 22);
   box-shadow: rgb(15, 99, 15) 0px 0px 8px;
 }
+
+.no-coinciden {
+  margin-top: 20vh;
+  margin-left: 22%;
+  position: absolute;
+  color: rgb(2, 0, 0);
+  text-align: center;
+  width: 60% !important;
+  margin-right: 0px;
+  border-radius: 12px;
+  height: 4vh;
+  background: #c97575;
+  box-shadow: 15px 15px 30px #b4aaaa, -15px -15px 30px #ffffff;
+}

@@ -1,5 +1,4 @@
-const btnIniciarSession = document.querySelector("#iniciar-session");
-const btnMenuSession = document.querySelector("#usuario-logeado");
+const btnIniciarSession = document.querySelector(".btn.btn-dark.rounded-pill");
 
 btnIniciarSession.addEventListener("click", () => {
   window.location.href =
@@ -21,7 +20,6 @@ switch (window.location.pathname) {
       "style",
       "background-color:black !important; box-shadow: 4px 4px 16px rgba(29, 29, 24, 0.7);"
     );
-    console.log(btnEstadistica);
     break;
   case "/proyecto-pagina-mayorista/pagina/html/editar-usuario.php":
     const btnEditar = document.getElementById("Editar-Usuario");
