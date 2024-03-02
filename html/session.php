@@ -50,6 +50,13 @@ if ($_GET) {
         } else if ($respuestaJson[0]["contrasenia"] === $pass) {
             session_start();
             $_SESSION["usuario"] = $respuestaJson[0]["usuario"];
+
+
+            ///uso de cookies para  guardar el usuario 
+            $dnivalido = $respuestaJson[0]["dni"];
+            setcookie('usuario', $dnivalido);
+
+
             header("Location: estadisticas.php");
         } else {
             echo '<div loading="lazy" class="no-coinciden" >Contraseña incorrecta</div>';

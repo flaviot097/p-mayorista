@@ -21,6 +21,24 @@
     <link rel="stylesheet" href="../assets/css/barra-lateral-usuario.css">
     <link rel="stylesheet" href="../assets/css/estadisticas.css">
 </head>
+<?php $cu = curl_init();
+$dni = $_COOKIE["usuario"];
+$url = "http://localhost:4000/ventas/" . $dni;
+curl_setopt($cu, CURLOPT_URL, $url);
+curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
+$respuesta = curl_exec($cu);
+
+if (curl_errno($cu)) {
+    $mensaje_error = curl_error($ci);
+
+} else {
+
+    curl_close($cu);
+}
+;
+$respuestaJson = json_encode($respuesta);
+echo "<script>var datosJson=$respuestaJson;</script>";
+?>
 
 <body>
     <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
@@ -35,19 +53,19 @@
 
                 <div class="ventas-recaudacion">
                     <p><strong>Recaudacion de ventas.</strong></p>
-                    <canvas id="myChart"></canvas>
+                    <canvas id="migrafica" width="300" height="100"></canvas>
                 </div>
                 <div class="ventas-mes">
                     <p><strong>Ventas del Mes(Unidades).</strong></p>
-                    <canvas id="myChart"></canvas>
+                    <canvas id="recaudacion" width="300" height="100"></canvas>
                 </div>
             </div>
         </div>
     </div>
 
-
 </body>
 <?php require_once("./footer.php"); ?>
 <script src="../assets/js/barra-lateral.js"></script>
+<script type="module" src="../assets/js/graficos.js"></script>
 
 </html>
