@@ -36,8 +36,7 @@ if (curl_errno($cu)) {
     curl_close($cu);
 }
 ;
-$respuestaJson = json_encode($respuesta);
-echo "<script>var datosJson=$respuestaJson;</script>";
+echo "<script>var datosJson=$respuesta;</script>";
 ?>
 
 <body>
@@ -57,7 +56,7 @@ echo "<script>var datosJson=$respuestaJson;</script>";
                 </div>
                 <div class="ventas-mes">
                     <p><strong>Ventas del Mes(Unidades).</strong></p>
-                    <canvas id="recaudacion" width="300" height="100"></canvas>
+                    <canvas id="recaudacion" width="500" height="200"></canvas>
                 </div>
             </div>
         </div>
@@ -66,6 +65,8 @@ echo "<script>var datosJson=$respuestaJson;</script>";
 </body>
 <?php require_once("./footer.php"); ?>
 <script src="../assets/js/barra-lateral.js"></script>
-<script type="module" src="../assets/js/graficos.js"></script>
+<script type="module" src="../assets/js/estadisticas.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </html>
