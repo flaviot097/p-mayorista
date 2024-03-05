@@ -17,14 +17,14 @@
 
     <link rel="stylesheet" href="../assets/css/mobster.css">
 
-    <link rel="stylesheet" href="../assets/css/session.css">
+    <link rel="stylesheet" href="../assets/css/crear-usuario.css">
 </head>
 <?php
 
-if ($_GET) {
-    if ($_GET['usuario'] !== null || $_GET['usuario'] !== "" && $_GET['password'] !== null || $_GET['password'] !== "") {
-        $dni = $_GET['usuario'];
-        $pass = $_GET['password'];
+if ($_POST) {
+    if ($_POST['usuario'] !== null || $_POST['usuario'] !== "" && $_POST['password'] !== null || $_POST['password'] !== "") {
+        $dni = $_POST['usuario'];
+        $pass = $_POST['password'];
 
         $ci = curl_init();
 
@@ -80,17 +80,21 @@ if ($_GET) {
     <div class="conteiner-cuerpo">
         <div class="iniciar-session">
             <div class="container-formulario-iniciar-sesion">
-                <form action="" method="get" class="formulario-iniciar-sesion">
+                <form action="" method="Post" class="formulario-iniciar-sesion">
                     <label for="" class="usuario-label-iniciar-session">DNI</label>
                     <input class="usuario-iniciar-session" name="usuario"></input>
                     <label for="" class="contrasenia-label-iniciar-session">Contraseña</label>
                     <input class="contrasenia-iniciar-session" name="password" type="password"></input>
-                    <button type="submit" class="btn-iniciar-session">Iniciar Sesion</button>
+                    <label for="" class="contrasenia-label-iniciar-session">Usuario</label>
+                    <input class="contrasenia-iniciar-session" name="nombre_usuario" type="text"></input>
+                    <label for="" class="contrasenia-label-iniciar-session">Nombre y Apellido</label>
+                    <input class="contrasenia-iniciar-session" name="nombre_y_apellido"></input>
+                    <label for="" class="contrasenia-label-iniciar-session">Razon Social</label>
+                    <input class="contrasenia-iniciar-session" name="razon_social" placeholder="persona ficica"></input>
+                    <label for="" class="contrasenia-label-iniciar-session">Empresa/Distribuidora</label>
+                    <input class="contrasenia-iniciar-session" name="distribuidora"></input>
+                    <button type="submit" class="btn-iniciar-session">Crear Usuario</button>
                 </form>
-                <a href="./crear-usuario.php" class="link-nuevo-usuario">
-                    <div class="nuevo-usuario">Crear
-                        Usuario</div>
-                </a>
             </div>
         </div>
     </div>

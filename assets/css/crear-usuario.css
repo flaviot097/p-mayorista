@@ -1,3 +1,13 @@
+.iniciar-session {
+  background-color: aliceblue;
+  height: 65vh !important;
+  margin-top: 5vh;
+  width: 20%;
+  border-radius: 10px;
+  background-image: url(../img/bg_hero_2.svg);
+  background-position: bottom;
+  box-shadow: rgb(145, 144, 144) 0px 0px 8px !important;
+}
 .conteiner-cuerpo {
   min-height: 80vh;
   display: flex;
@@ -10,15 +20,7 @@
 .backgaund-imagen {
   height: 11.5vh;
 }
-.iniciar-session {
-  background-color: aliceblue;
-  height: 30vh !important;
-  margin-top: 20vh;
-  border-radius: 10px;
-  background-image: url(../img/bg_hero_2.svg);
-  background-position: bottom;
-  box-shadow: rgb(145, 144, 144) 0px 0px 8px !important ;
-}
+
 .formulario-iniciar-sesion {
   display: flex;
   flex-direction: column;
@@ -48,7 +50,6 @@
   border: transparent;
   transition: all 0.3s ease-out;
   width: 94% !important;
-  margin-bottom: 0.8vh;
 }
 
 .btn-iniciar-session:hover {
@@ -68,25 +69,4 @@
   height: 4vh;
   background: #c97575;
   box-shadow: 15px 15px 30px #b4aaaa, -15px -15px 30px #ffffff;
-}
-
-.nuevo-usuario {
-  margin-top: 4%;
-  border-radius: 13px;
-  background-color: green;
-  color: white;
-  border: transparent;
-  transition: all 0.3s ease-out;
-  width: 94% !important;
-  margin-bottom: 0.8vh;
-  text-align: center;
-  margin-left: 2.5% !important;
-}
-.nuevo-usuario:hover {
-  background-color: rgb(22, 196, 22);
-  box-shadow: rgb(15, 99, 15) 0px 0px 8px;
-}
-.link-nuevo-usuario {
-  text-decoration: none !important;
-  border-color: transparent !important;
 }
