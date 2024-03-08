@@ -25,44 +25,55 @@ if ($_POST) {
     if ($_POST['usuario'] !== null || $_POST['usuario'] !== "" && $_POST['password'] !== null || $_POST['password'] !== "") {
         $dni = $_POST['usuario'];
         $pass = $_POST['password'];
+        $nombre_usuario = $_POST["nombre_usuario"];
+        $nombre_y_apellido = $_POST["nombre_y_apellido"];
+        $razon_social = $_POST["razon_social"];
+        $distribuidora = $_POST["distribuidora"];
+        $email = $_POST["mail"];
 
-        $ci = curl_init();
+        $url = "http://localhost:4000/creacion";
 
-        $url = "http://localhost:4000/validacion/dni/" . $dni;
+        $array = array(
+            'dni' => $dni,
+            'usuario' => $nombre_usuario,
+            'contrasenia' => $pass,
+            'nombre_y_apellido' => $nombre_y_apellido,
+            'razon_social' => $razon_social,
+            'distribuidora' => $distribuidora,
+            'email' => $email
+        );
+        $data_string = json_encode($array);
 
-        curl_setopt($ci, CURLOPT_URL, $url);
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
-        curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt(
+            $ch,
+            CURLOPT_HTTPHEADER,
+            array(
 
-        $respuesta = curl_exec($ci);
 
-        if (curl_errno($ci)) {
-            $mensaje_error = curl_error($ci);
+                'Content-Type: application/json',
 
+
+                'Content-Length: ' . strlen($data_string)
+            )
+        );
+
+        $result = curl_exec($ch);
+
+
+        if (curl_errno($ch)) {
+            echo 'Error:' . curl_error($ch);
         } else {
+            echo "<script> alert('usuario creado con exito');</script>";
 
-            curl_close($ci);
+
         }
         ;
-        $respuestaJson = json_decode($respuesta, true);
-        if (!$respuestaJson) {
-            echo '<div loading="lazy" class="no-coinciden" >El DNI ingresado es incorrecto o no existe</div>';
-        } else if ($respuestaJson[0]["contrasenia"] === $pass) {
-            session_start();
-            $_SESSION["usuario"] = $respuestaJson[0]["usuario"];
-
-
-            ///uso de cookies para  guardar el usuario 
-            $dnivalido = $respuestaJson[0]["dni"];
-            setcookie('usuario', $dnivalido);
-
-
-            header("Location: estadisticas.php");
-        } else {
-            echo '<div loading="lazy" class="no-coinciden" >Contraseña incorrecta</div>';
-        }
-        ;
-
+        curl_close($ch);
 
     }
     ;
@@ -80,7 +91,7 @@ if ($_POST) {
     <div class="conteiner-cuerpo">
         <div class="iniciar-session">
             <div class="container-formulario-iniciar-sesion">
-                <form action="" method="Post" class="formulario-iniciar-sesion">
+                <form method="Post" class="formulario-iniciar-sesion">
                     <label for="" class="usuario-label-iniciar-session">DNI</label>
                     <input class="usuario-iniciar-session" name="usuario"></input>
                     <label for="" class="contrasenia-label-iniciar-session">Contraseña</label>
@@ -93,6 +104,8 @@ if ($_POST) {
                     <input class="contrasenia-iniciar-session" name="razon_social" placeholder="persona ficica"></input>
                     <label for="" class="contrasenia-label-iniciar-session">Empresa/Distribuidora</label>
                     <input class="contrasenia-iniciar-session" name="distribuidora"></input>
+                    <label for="" class="contrasenia-label-iniciar-session">Email</label>
+                    <input class="contrasenia-iniciar-session" name="mail" type="mail"></input>
                     <button type="submit" class="btn-iniciar-session">Crear Usuario</button>
                 </form>
             </div>
