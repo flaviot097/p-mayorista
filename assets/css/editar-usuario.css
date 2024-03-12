@@ -15,13 +15,13 @@
   box-shadow: rgb(126, 123, 123) 0px 0px 8px;
 }
 .btn-actualizar {
-  margin-top: 12px;
+  margin-top: 9px;
   width: 76% !important;
   background-color: rgb(58, 56, 56) !important;
   color: white;
   border-radius: 20px;
   border-color: transparent;
-  margin-bottom: 15px;
+
   box-shadow: rgb(221, 220, 220) 0px 0px 8px;
 }
 .btn-actualizar:hover {
@@ -33,4 +33,23 @@
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
+}
+#contenedor-form-alertas {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  inline-size: -webkit-fill-available !important;
+}
+#filtrado-exitoso {
+  width: 20vh !important;
+  margin-top: -8vh;
+  font-weight: bold;
+  margin-left: -1vh;
+}
+.no-coinciden {
+  width: 20vh !important;
+  margin-top: -8vh;
+  font-weight: bold;
+  margin-left: -1vh;
 }
