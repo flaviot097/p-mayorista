@@ -22,6 +22,26 @@
     <link rel="stylesheet" href="../assets/css/stock.css">
 </head>
 
+<?php $ci = curl_init();
+$dni = $_COOKIE["usuario"];
+$url = "http://localhost:4000/documento/" . $dni;
+
+curl_setopt($ci, CURLOPT_URL, $url);
+
+curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+
+$respuesta = curl_exec($ci);
+
+if (curl_errno($ci)) {
+    $mensaje_error = curl_error($ci);
+} else {
+    curl_close($ci);
+
+}
+; ?>
+
+<?php echo "<script> var datosProductos=$respuesta</script>"; ?>
+
 <body>
     <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
     </div>
@@ -31,30 +51,10 @@
 
         <div class="contenedor-card-productos">
             <div class="col justify-content-center mt-5">
+                <button id="btnFiltrar-menor">Ordenar por stock</button>
                 <!-- CARDS DE PRODUCTOS -->
                 <div class="productos-stock">
-                    <div class="producto-stock">
-                        <a href="#" class="btn btn-primary btn-sm d-inline-flex align-items-center">Hierro N°12. <h6
-                                class="codigo-producto" id="codigo-producto">codigo de producto: 345-3867-idf-3</h6>
-                            <h6 class="codigo-producto" id="cantidad-producto"> Cantidad: 3000 Unidades</h6>
-                        </a>
-                    </div>
-                    <div class="producto-stock">
-                        <a href="#" class="btn btn-primary btn-sm d-inline-flex align-items-center faltante"
-                            id="faltante">Hierro
-                            N°8. <h6 class="codigo-producto" id="codigo-producto">codigo de producto: 345-3867-idf-3
-                            </h6>
-                            <h6 class="codigo-producto" id="cantidad-producto"> Sin stock</h6>
-                        </a>
-                    </div>
-                    <div class="producto-stock">
-                        <a href="#" class="btn btn-primary btn-sm d-inline-flex align-items-center poco"
-                            id="poco">Hierro
-                            N°6. <h6 class="codigo-producto" id="codigo-producto">codigo de producto: 345-3867-idf-3
-                            </h6>
-                            <h6 class="codigo-producto" id="cantidad-producto"> Cantidad: 3 Unidades</h6>
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -64,5 +64,7 @@
 </body>
 <?php require_once("./footer.php"); ?>
 <script src="../assets/js/barra-lateral.js"></script>
+<script src="../assets/js/cartas-prod-stock.js"></script>
+<script src="../assets/js/filtro-stock.js"></script>
 
 </html>

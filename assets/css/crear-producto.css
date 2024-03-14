@@ -28,4 +28,15 @@
 .form-crear-producto {
   box-shadow: rgb(58, 56, 56) 0px 0px 8px;
   border-radius: 10px;
+  background-color: gray;
+}
+#filtrado-exitoso {
+  width: 42vh !important;
+  font-weight: bold;
+  margin-top: 2vh;
+  margin-left: -1vh;
+  box-shadow: rgb(58, 56, 56) 0px 0px 8px;
+}
+#mensaje {
+  background-color: transparent;
 }
