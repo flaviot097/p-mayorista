@@ -5,9 +5,6 @@ const btnEstadisticas = document.getElementById("Estadisticas");
 const btnEditarUsuario = document.getElementById("Editar-Usuario");
 
 const btnCrearPublicacion = document.getElementById("Crear-Publicacion");
-const btnPublicacionesActivas = document.getElementById(
-  "Publicaciones-Activas"
-);
 
 const btnModificarPublicacion = document.getElementById(
   "Modificar-Publicacion"
@@ -32,11 +29,6 @@ btnEstadisticas.addEventListener("click", () => {
 btnFacturacion.addEventListener("click", () => {
   window.location.href =
     "http://localhost/proyecto-pagina-mayorista/pagina/html/facturacion.php";
-});
-
-btnPublicacionesActivas.addEventListener("click", () => {
-  window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/publicaciones-activas.php";
 });
 
 btnStock.addEventListener("click", () => {

@@ -26,9 +26,9 @@
 <body>
     <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
     </div>
-    <?php require_once("./header.php"); ?>
+    <?php require_once ("./header.php"); ?>
     <div class="conteiner-cuerpo">
-        <?php require_once("./barra-lateral-usuario.php"); ?>
+        <?php require_once ("./barra-lateral-usuario.php"); ?>
 
         <div class="contenedor-card-crear-producto" id="mensaje">
             <form class="form-crear-producto" method="get">
@@ -45,7 +45,7 @@
                 <label for="" class="descripcion">Descripcion</label><br>
                 <textarea name="descripcion" id="descripcion" cols="23" rows="8"></textarea><br>
 
-                <button type="" class="btn-actualizar">Actualizar</button>
+                <button type="" class="btn-actualizar">Crear</button>
             </form>
         </div>
     </div>
@@ -104,6 +104,6 @@
 }
 ; ?>
 
-<?php require_once("./footer.php"); ?>
+<?php require_once ("./footer.php"); ?>
 
 </html>

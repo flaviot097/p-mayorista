@@ -10,10 +10,6 @@
         </button>
         <button type="button" id="Crear-Publicacion" class="btn btn-primary filtrar crear-publicacion">Crear Publicacion
         </button>
-        <button type="button" id="Publicaciones-Activas"
-            class="btn btn-primary filtrar publicaciones-activas">Publicaciones
-            Activas
-        </button>
         <button type="button" id="Modificar-Publicacion" class="btn btn-primary filtrar modificar-mublicacion">Modificar
             Publicacion
         </button>
