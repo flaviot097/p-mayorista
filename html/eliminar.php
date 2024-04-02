@@ -45,11 +45,11 @@
             <form action="" class="form-crear-producto" method="post">
                 <strong class="texto">Eliminar usuario</strong><br>
                 <label for="" class="usuario-eliminar">DNI</label><br>
-                <input type="text" id="" class="usuario"><br>
+                <input type="text" id="" class="usuario" name="dni"><br>
                 <label for="" class="contrasenia-actual">Contraseña</label><br>
-                <input type="text" id="" class="codigo-producto"><br>
+                <input type="text" id="" class="codigo-producto" name="contrasenia"><br>
                 <label for="" class="contrasenia-actual">Reingrese Contraseña</label><br>
-                <input type="text" id="" class="codigo-producto"><br>
+                <input type="text" id="" class="codigo-producto" name="r-contrasenia"><br>
                 <button type="" class="btn-eliminar">Eliminar</button>
             </form>
         </div>
@@ -58,21 +58,44 @@
     <?php
 
     if ($_POST) {
-        $ci = curl_init();
-        $dni = $_COOKIE["usuario"];
-        $codigo = $_POST["codigo"];
-        $url = "http://localhost:4000/inicio/eliminar/" . $codigo . "/" . $dni;
-        curl_setopt($ci, CURLOPT_URL, $url);
-        curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');
-        curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+        if ($_POST["codigo"]) {
+            $ci = curl_init();
+            $dni = $_COOKIE["usuario"];
+            $codigo = $_POST["codigo"];
+            $url = "http://localhost:4000/inicio/eliminar/" . $codigo . "/" . $dni;
+            curl_setopt($ci, CURLOPT_URL, $url);
+            curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');
+            curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
 
-        $exe = curl_exec($ci);
-        if (curl_errno($ci)) {
-            $mensaje_error = curl_error($ci);
+            $exe = curl_exec($ci);
+            if (curl_errno($ci)) {
+                $mensaje_error = curl_error($ci);
+            } else {
+
+                $datosUsuario = json_decode($exe, true);
+                curl_close($ci);
+            }
+            ;
         } else {
+            $contrasenia = $_POST["contrasenia"];
+            $rcontrasenia = $_POST["r-contrasenia"];
+            $dni = $_COOKIE["usuario"];
+            if ($rcontrasenia == $contrasenia) {
 
-            $datosUsuario = json_decode($exe, true);
-            curl_close($ci);
+                $ruta = "http://localhost:4000/eliminacion/" . $dni;
+                $cu = curl_init();
+                curl_setopt($cu, CURLOPT_URL, $ruta);
+                curl_setopt($cu, CURLOPT_CUSTOMREQUEST, "DELETE");
+                curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
+                $resp = curl_exec($cu);
+                if (curl_errno($cu)) {
+                    $mensaje_error = curl_error($cu);
+                } else {
+                    $datosUsuario = json_decode($resp, true);
+                    curl_close($cu);
+                }
+                ;
+            }
         }
         ;
     }
