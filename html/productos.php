@@ -23,7 +23,7 @@
 <body>
     <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
     </div>
-    <?php require_once("./header.php");
+    <?php require_once ("./header.php");
 
     $ci = curl_init();
 
@@ -75,7 +75,8 @@
                                 <img src="../assets/img/hierro_N12.png" alt="" class="img-productos">
                             </div>
                             <h5 class="fg-gray nombre-producto" id="">Hierro N°12</h5>
-                            <p id="id-producto" class="id-producto">codigo de producto:345-3867-idf-3 </p>
+                            <p name="id-producto" id="id-producto" class="id-producto">codigo de producto:345-3867-idf-3
+                            </p>
                             <p class="fs-small">Ideal para hacer estructuras de hierro
                                 y edificaciones. Debido a su
                                 resistencia ,es mas es el mas usado en el rubro de la construcion.
@@ -203,9 +204,10 @@
 
 
 </body>
-<?php require_once("./footer.php"); ?>
+<?php require_once ("./footer.php"); ?>
 <script src="../assets/js/reproducir-cartas-prod.js"></script>
 <script src="../assets/js/filtrar.js"></script>
+<script src="../assets/js/carrito.js"></script>
 
 
 

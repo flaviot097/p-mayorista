@@ -154,3 +154,33 @@ div.form-filtrar-prod {
   box-shadow: 15px 15px 30px #adb4aa, -15px -15px 30px #ffffff;
   margin-bottom: 15px;
 }
+
+.btn-agregar-carrito {
+  background-color: rgb(22, 196, 22);
+  box-shadow: rgb(15, 99, 15) 0px 0px 8px;
+  border: 0px;
+  border-radius: 5px;
+}
+.btn-agregar-carrito:hover {
+  box-shadow: grey 0px 0px 8px;
+  background-color: rgb(15, 99, 15);
+}
+.input-disabled {
+  background-color: transparent;
+  width: 0px;
+  height: 0px;
+  border-color: transparent;
+  cursor: default;
+}
+
+.form-action-redirection:hover {
+  cursor: pointer;
+}
+.btn-ver-producto {
+  background-color: rgb(70, 70, 218);
+  box-shadow: rgb(35, 35, 231) 0px 0px 8px;
+  border: 0px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+}

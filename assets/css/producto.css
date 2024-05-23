@@ -1,0 +1,68 @@
+.img-producto-seccion {
+  width: 100%;
+  border: rgb(192, 192, 192) solid 0.5px;
+  box-shadow: grey 0px 0px 16px;
+  margin-left: 37%;
+}
+.container-price-sale-img {
+  display: flex;
+  flex-direction: row;
+}
+.id-producto {
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 17px;
+}
+
+.btn-venta,
+.agregar-carrito {
+  background-color: #242a31;
+  border-color: #343a40;
+  box-shadow: rgb(108, 109, 109) 0px 0px 8px;
+  border: 0px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  width: 23vh;
+  color: white;
+}
+.btn-venta:hover {
+  box-shadow: grey 0px 0px 26px;
+  background-color: #111213;
+}
+.agregar-carrito:hover {
+  box-shadow: grey 0px 0px 26px;
+  background-color: #111213;
+}
+.sale-price {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 24%;
+  width: 30vh;
+}
+.decripcion {
+  margin-top: 20px;
+  margin-left: 27vh;
+  width: 67%;
+  font-size: large;
+}
+.contenedor-carta-producto {
+  margin: 25px;
+}
+.cantidad-input {
+  width: 70px;
+  text-align: center;
+}
+.nombre-producto {
+  margin: 5px;
+}
+.form-sales {
+  margin: 10px;
+}
+.agregar-carrito {
+  margin-left: 10px;
+}
+.cantidad-stock {
+  margin-top: 5px;
+}
