@@ -87,3 +87,7 @@
   background-color: rgb(8, 126, 8);
   box-shadow: rgb(15, 99, 15) 0px 0px 8px;
 }
+
+.tarjeta-productos {
+  margin-bottom: 20px !important;
+}
