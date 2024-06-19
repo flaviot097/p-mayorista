@@ -29,6 +29,8 @@
   box-shadow: rgb(58, 56, 56) 0px 0px 8px;
   border-radius: 10px;
   background-color: gray;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 #filtrado-exitoso {
   width: 42vh !important;
@@ -39,4 +41,8 @@
 }
 #mensaje {
   background-color: transparent;
+}
+.img-prod {
+  width: 60%;
+  margin-left: 6%;
 }

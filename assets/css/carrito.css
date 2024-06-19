@@ -91,3 +91,16 @@
 .tarjeta-productos {
   margin-bottom: 20px !important;
 }
+.bolsa-de-compras {
+  margin-left: 40%;
+}
+b {
+  text-align: center;
+  margin-left: 7%;
+}
+.descubrir-productos {
+  color: #000;
+}
+.descubrir-productos:hover {
+  color: #198724;
+}

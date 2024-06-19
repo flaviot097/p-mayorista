@@ -51,7 +51,9 @@
 
     <div class="contenedor-carta-producto">
         <div class="container-price-sale-img">
-            <div class="container-img"><img src="../assets/img/hierro_N12.png" alt="" class="img-producto-seccion">
+            <div class="container-img"><img
+                    src="http://localhost/proyecto-pagina-mayorista/pagina/uploads/<?php echo $Jsondata[0]->imagen; ?>"
+                    alt="" class="img-producto-seccion">
             </div>
             <div class="sale-price">
                 <h2 class="nombre-producto"><?php echo strtoupper($Jsondata[0]->producto); ?></h2>

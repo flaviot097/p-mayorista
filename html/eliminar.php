@@ -38,9 +38,10 @@
                 <br>
                 <label for="" class="contrasenia-actual">Codigo de producto</label><br>
                 <input type="text" id="" class="codigo-producto" name="codigo"><br>
-                <button type="" class="btn-eliminar">Eliminar</button>
+                <button type="submit" class="btn-eliminar">Eliminar</button>
             </form>
         </div>
+        <div id="mensaje"></div>
         <div class="contenedor-card-crear-producto">
             <form action="" class="form-crear-producto" method="post">
                 <strong class="texto">Eliminar usuario</strong><br>
@@ -50,58 +51,81 @@
                 <input type="text" id="" class="codigo-producto" name="contrasenia"><br>
                 <label for="" class="contrasenia-actual">Reingrese Contraseña</label><br>
                 <input type="text" id="" class="codigo-producto" name="r-contrasenia"><br>
-                <button type="" class="btn-eliminar">Eliminar</button>
+                <button type="submit" class="btn-eliminar">Eliminar</button>
             </form>
         </div>
+
     </div>
-
+    <script src="../assets/js/plantilla-alerta-exitosa.js"></script>
     <?php
-
-    if ($_POST) {
-        if ($_POST["codigo"]) {
-            $ci = curl_init();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Función para eliminar producto
+        if (!empty($_POST["codigo"])) {
             $dni = $_COOKIE["usuario"];
             $codigo = $_POST["codigo"];
-            $url = "http://localhost:4000/inicio/eliminar/" . $codigo . "/" . $dni;
+            $url = "http://localhost:4000/inicio/" . $codigo;
+            $ci = curl_init();
             curl_setopt($ci, CURLOPT_URL, $url);
             curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');
             curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
 
-            $exe = curl_exec($ci);
+            $response = curl_exec($ci);
             if (curl_errno($ci)) {
-                $mensaje_error = curl_error($ci);
+                echo "Error en cURL: " . curl_error($ci);
             } else {
-
-                $datosUsuario = json_decode($exe, true);
-                curl_close($ci);
+                $httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+                if ($httpCode == 200) {
+                    echo "<script>deleteOK();</script>";
+                } else if ($httpCode == 404) {
+                    echo "Error al eliminar producto. Producto no encontrado.";
+                } else {
+                    echo "Error al eliminar producto. Código de respuesta: " . $httpCode;
+                }
             }
-            ;
-        } else {
+            curl_close($ci);
+        } else if (!empty($_POST["dni"]) && !empty($_POST["contrasenia"]) && !empty($_POST["r-contrasenia"])) {
             $contrasenia = $_POST["contrasenia"];
             $rcontrasenia = $_POST["r-contrasenia"];
-            $dni = $_COOKIE["usuario"];
-            if ($rcontrasenia == $contrasenia) {
-
-                $ruta = "http://localhost:4000/eliminacion/" . $dni;
-                $cu = curl_init();
-                curl_setopt($cu, CURLOPT_URL, $ruta);
-                curl_setopt($cu, CURLOPT_CUSTOMREQUEST, "DELETE");
-                curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
-                $resp = curl_exec($cu);
-                if (curl_errno($cu)) {
-                    $mensaje_error = curl_error($cu);
-                } else {
-                    $datosUsuario = json_decode($resp, true);
-                    curl_close($cu);
-                }
-                ;
+            if ($contrasenia === $rcontrasenia) {
+                $dni = $_COOKIE["usuario"];
+                eliminarUsuario($dni);
+            } else {
+                echo "Las contraseñas no coinciden.";
             }
+        }
+
+        // Función para eliminar usuario
+        function eliminarUsuario($dni)
+        {
+            $url = "http://localhost:4000/eliminacion/" . urlencode($dni);
+            $ci = curl_init();
+            curl_setopt($ci, CURLOPT_URL, $url);
+            curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');
+            curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+
+            $response = curl_exec($ci);
+            if (curl_errno($ci)) {
+                echo "Error en cURL: " . curl_error($ci);
+            } else {
+                $httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+                if ($httpCode == 200) {
+                    echo "<script>deleteOK();</script>";
+                } else if ($httpCode == 404) {
+                    echo "Error al eliminar usuario. Usuario no encontrado.";
+                } else {
+                    echo "Error al eliminar usuario. Código de respuesta: " . $httpCode;
+                }
+            }
+            curl_close($ci);
         }
         ;
     }
+
     ?>
+
 </body>
 <?php require_once ("./footer.php"); ?>
 <script src="../assets/js/barra-lateral.js"></script>
+
 
 </html>

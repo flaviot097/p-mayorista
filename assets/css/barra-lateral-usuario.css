@@ -11,3 +11,11 @@
   text-align: center;
   padding-top: 2%;
 }
+
+p {
+  width: max-content;
+}
+
+.modificar-publicacion {
+  margin-left: -10px;
+}

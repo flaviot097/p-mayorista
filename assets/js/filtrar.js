@@ -10,10 +10,11 @@ imputNombre.addEventListener("change", () => {
     let palabraAfiltrar = imputNombre.value;
     dataFilter.forEach((element) => {
       if (palabraAfiltrar == element.producto) {
+        const imagePath = `http://localhost/proyecto-pagina-mayorista/pagina/uploads/${element.imagen}`;
         const divs = `<div loading="lazy" class="wow fadeInUp" id="${element.codigo}">
                       <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
                     <div class="svg-icon mx-auto mb-4">
-                        <img loading="lazy" src="../assets/img/hierro_N12.png" alt="" class="img-productos" id="${element.producto}">
+                        <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${element.producto}">
                     </div>
                     <h5 class="fg-gray nombre-producto" id="${element.producto}">${element.producto}</h5>
                     <p id="${element.codigo}" class="id-producto">codigo de producto:${element.codigo} </p>
@@ -36,9 +37,11 @@ imputNombre.addEventListener("change", () => {
       fltroPoducto.setAttribute("style", "width: 98% !important;");
       const divNocoincidencia = `<div class="no-coinciden"><p class="letras-no-coincide"> No se encontraron resultados de "${palabraAfiltrar}"❌</p></div>`;
       contenedor.innerHTML = divNocoincidencia;
+      btnFiltrar.style.display = "none";
     } else {
       const filtradoExitoso = `<div loading="lazy" class="no-coinciden filtrado-exitoso" id="filtrado-exitoso">Filtrado exitoso</div>`;
       contenedor.innerHTML += filtradoExitoso;
+      btnFiltrar.style.display = "none";
     }
   });
 });
@@ -49,10 +52,11 @@ imputDistribuidora.addEventListener("change", () => {
     let distribuidorFiltrar = imputDistribuidora.value;
     dataFilter.forEach((element) => {
       if (distribuidorFiltrar === element.distribuidora) {
+        const imagePath = `http://localhost/proyecto-pagina-mayorista/pagina/uploads/${element.imagen}`;
         const divs = `<div loading="lazy" class="wow fadeInUp" id="${element.codigo}">
                       <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
                     <div class="svg-icon mx-auto mb-4">
-                        <img loading="lazy" src="../assets/img/hierro_N12.png" alt="" class="img-productos" id="${element.producto}">
+                        <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${element.producto}">
                     </div>
                     <h5 class="fg-gray nombre-producto" id="${element.producto}">${element.producto}</h5>
                     <p id="${element.codigo}" class="id-producto">codigo de producto:${element.codigo} </p>
@@ -75,9 +79,11 @@ imputDistribuidora.addEventListener("change", () => {
       fltroPoducto.setAttribute("style", "width: 98% !important;");
       const divNocoincidencia = `<div class="no-coinciden"><p class="letras-no-coincide"> No se encontraron resultados de "${palabraAfiltrar}"❌</p></div>`;
       contenedor.innerHTML = divNocoincidencia;
+      btnFiltrar.style.display = "none";
     } else {
       const filtradoExitoso = `<div loading="lazy" class="no-coinciden filtrado-exitoso" id="filtrado-exitoso">Filtrado exitoso</div>`;
       contenedor.innerHTML += filtradoExitoso;
+      btnFiltrar.style.display = "none";
     }
   });
 });

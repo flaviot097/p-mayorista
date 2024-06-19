@@ -5,27 +5,12 @@
 .backgaund-imagen {
   height: 11.5vh;
 }
-.contenedor-filtro {
-  min-width: 20vh;
-  max-width: 25vh;
-  min-height: 80vh;
-  background-image: url("../img/bg_hero_2.svg") !important;
-  /*ësto es para que la imagen no se repita*/
-  background-repeat: no-repeat;
-  box-shadow: inset -4px -4px 16px rgba(9, 9, 9, 0.3);
-}
 
 #producto-filtro-letras,
 #distibuidor-filtro-letras {
   color: aliceblue;
 }
-div.form-filtrar-prod {
-  padding-top: 3.5vh;
-  justify-content: center;
-  padding-left: 1vh;
-  width: 25vh;
-  padding-right: 0px;
-}
+
 #producto-filtro {
   width: 75% !important;
   border-radius: 5px;
@@ -183,4 +168,23 @@ div.form-filtrar-prod {
   border-radius: 5px;
   margin-bottom: 20px;
   width: 100%;
+}
+
+div.form-filtrar-prod {
+  padding-top: 3.5vh;
+  display: flex;
+  justify-content: center;
+  padding-left: 1vh;
+  width: 25vh;
+  padding-right: 0px;
+  flex-direction: column;
+}
+
+.contenedor-filtro {
+  min-width: 20vh;
+  max-width: 20.01vh;
+  min-height: 80vh;
+  background-image: url(../img/bg_hero_2.svg) !important;
+  background-repeat: no-repeat;
+  box-shadow: inset -4px -4px 16px rgba(9, 9, 9, 0.3);
 }

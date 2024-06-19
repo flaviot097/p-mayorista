@@ -18,3 +18,9 @@ function mensajeProductosExito() {
     '<div loading="lazy" class="no-coinciden filtrado-exitoso" id="filtrado-exitoso">Se publico el producto exitosamente</div>';
   return (divcuerpo.innerHTML += divtarjetaExito);
 }
+
+function deleteOK() {
+  const divtarjetaExito =
+    '<div loading="lazy" class="no-coinciden filtrado-exitoso" id="filtrado-exitoso">Se elimino el producto exitosamente</div>';
+  return (divcuerpo.innerHTML += divtarjetaExito);
+}

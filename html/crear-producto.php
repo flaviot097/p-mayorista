@@ -31,9 +31,11 @@
         <?php require_once ("./barra-lateral-usuario.php"); ?>
 
         <div class="contenedor-card-crear-producto" id="mensaje">
-            <form class="form-crear-producto" method="get">
+            <form class="form-crear-producto" method="post" enctype="multipart/form-data">
                 <label for="" class="nombre-producto">Nombre del producto</label><br>
                 <input type="text" id="" class="producto" name="producto"><br>
+                <label for="" class="imagen">Imagen</label><br>
+                <input type="file" class="img-prod" id="" name="img"><br>
                 <label for="" class="codigo-actual">Codigo de producto</label><br>
                 <input type="text" class="codigo-actual" id="" name="codigo"><br>
                 <label for="" class="precio"></label>Precio<br>
@@ -55,54 +57,52 @@
 <script src="../assets/js/barra-lateral.js"></script>
 <script src="../assets/js/mensajes.js"></script>
 <script src="../assets/js/plantilla-alerta-exitosa.js"></script>
-<?php if ($_GET) {
-    if ($_GET["producto"] !== "" && $_GET["codigo"] !== "" && $_GET["precio"] !== "" && $_GET["stock"] !== "" && $_GET["descripcion"] !== "" && $_GET["dni"] !== "") {
-        $arreglo = array(
-            "producto" => $_GET['producto'],
-            "codigo" => $_GET['codigo'],
-            "precio" => $_GET['precio'],
-            "stock" => $_GET['stock'],
-            "descripcion" => $_GET['descripcion'],
-            "dni" => $_GET['dni']
-        );
+<?php
+if ($_POST) {
+    if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"])) {
+
+        // Recoge los datos del formulario
+        $producto = $_POST['producto'];
+        $codigo = $_POST['codigo'];
+        $precio = $_POST['precio'];
+        $stock = $_POST['stock'];
+        $descripcion = $_POST['descripcion'];
+        $dni = $_POST['dni'];
+        $imagen = $_FILES['img']['tmp_name'];
+
+        // Inicializa cURL
+        $url = "http://localhost:4000/inicio/crearProducto";
+        $curl = curl_init($url);
+
+
+        $data = [
+            'producto' => $producto,
+            'codigo' => $codigo,
+            'precio' => $precio,
+            'stock' => $stock,
+            'descripcion' => $descripcion,
+            'dni' => $dni,
+            'imagen' => new CURLFile($imagen, $_FILES['img']['type'], $_FILES['img']['name'])
+        ];
+
+
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+
+        $resultado = curl_exec($curl);
+        if (curl_errno($curl)) {
+            echo 'Error:' . curl_error($curl);
+        } else {
+            echo "<script>mensajeProductosExito();</script>";
+        }
+
+
+        curl_close($curl);
     }
-    ;
-    $datosProductos = json_encode($arreglo);
-    $url = "http://localhost:4000/inicio";
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $datosProductos);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-
-
-            'Content-Type: application/json',
-
-
-            'Content-Length: ' . strlen($datosProductos)
-        )
-    );
-
-    $resultado = curl_exec($curl);
-    if (curl_errno($curl)) {
-        echo 'Error:' . curl_error($curl);
-    } else {
-        echo "<script> mensajeProductosExito();</script>";
-
-
-    }
-    ;
-    curl_close($curl);
-
-
-
-
 }
-; ?>
+?>
 
 <?php require_once ("./footer.php"); ?>
 

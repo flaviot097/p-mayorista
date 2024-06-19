@@ -32,3 +32,10 @@
 .texto {
   padding-left: 2%;
 }
+#filtrado-exitoso {
+  width: 42vh !important;
+  font-weight: bold;
+  margin-top: 2vh;
+  margin-left: -1vh;
+  box-shadow: rgb(58, 56, 56) 0px 0px 8px;
+}
