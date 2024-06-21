@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <?php include("./header.php"); ?>
+    <?php include ("./header.php"); ?>
 
     <div class="page-hero-section bg-image hero-home-1" style="background-image: url(../assets/img/bg_hero_2.svg)">
         <div class="hero-caption pt-5">
@@ -46,9 +46,9 @@
                             diferentes variables (Ventas,Compras,Rango de Precios,etc.).
                         </p>
                         <?php if (isset($_SESSION["usuario"])) { ?>
-                        <a href="./publicaciones-activas.php" class="btn btn-primary rounded-pill">¡Ir a menu! </a>
+                            <a href="./publicaciones-activas.php" class="btn btn-primary rounded-pill">¡Ir a menu! </a>
                         <?php } else { ?>
-                        <a href="./session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
+                            <a href="./session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
                         ; ?>
                     </div>
                     <div class="col-lg-6 d-none d-lg-block wow zoomIn">
@@ -158,9 +158,9 @@
                             funcionalidades.
                         </p>
                         <?php if (isset($_SESSION["usuario"])) { ?>
-                        <a href="./stock.php" class="btn btn-primary rounded-pill">¡Controlar stock! </a>
+                            <a href="./stock.php" class="btn btn-primary rounded-pill">¡Controlar stock! </a>
                         <?php } else { ?>
-                        <a href="./session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
+                            <a href="./session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
                         ; ?>
                     </div>
                     <div class="col-lg-5 py-3">
@@ -250,7 +250,6 @@
         </div>
     </div>
 
-
     <div class="page-section">
         <div class="container">
             <div class="row">
@@ -266,32 +265,37 @@
                         No te preocupes, solo contáctanos.
                     </h1>
 
-                    <form method="POST" class="mt-5">
+                    <form id="form" class="mt-5">
                         <div class="form-group wow fadeInUp">
-                            <label for="nombre-empresa" class="fw-medium fg-grey">Empresa
+                            <label for="nombre-empresa" class="fw-medium fg-grey">Nombre
                             </label>
-                            <input type="text" class="form-control" id="nombre-empresa" />
+                            <input type="text" name="user_name" class="form-control" id="nombre-empresa" />
                         </div>
                         <div class="form-group wow fadeInUp">
                             <label for="email" class="fw-medium fg-grey">Email</label>
-                            <input type="text" class="form-control" id="email" />
+                            <input type="email" name="user_email" class="form-control" id="email" />
                         </div>
 
                         <div class="form-group wow fadeInUp">
                             <label for="mensaje" class="fw-medium fg-grey">Mensaje</label>
-                            <textarea rows="6" class="form-control" id="mensaje"></textarea>
+                            <textarea rows="6" name="message" class="form-control" id="mensaje"></textarea>
                         </div>
-
                         <div class="form-group mt-4 wow fadeInUp">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <input type="submit" class="btn btn-primary" id="button" value="Enviar">
                         </div>
                     </form>
+                    <script type="text/javascript"
+                        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+                    <script type="text/javascript">
+                        emailjs.init('lWPGTCPL2cFxpikT_')
+                    </script>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php include('./footer.php'); ?>
+    <?php include ('./footer.php'); ?>
 
     <script src="../assets/js/jquery-3.5.1.min.js"></script>
 
@@ -303,5 +307,27 @@
 
     <script src="../assets/js/mobster.js"></script>
 </body>
+<script>
+    const btn = document.getElementById('button');
+
+    document.getElementById('form')
+        .addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            btn.value = 'enviando...';
+
+            const serviceID = 'default_service';
+            const templateID = 'template_jom08lp';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Enviar email';
+                    alert('Enviado!');
+                }, (err) => {
+                    btn.value = 'Enviar mail';
+                    alert(JSON.stringify(err));
+                });
+        });
+</script>
 
 </html>

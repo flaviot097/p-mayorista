@@ -42,7 +42,6 @@
 
     }
     ;
-
     ?>
     <div class="conteiner-cuerpo">
         <div class="contenedor-filtro">
@@ -52,6 +51,10 @@
                     <input type="text" id="producto-filtro" class="form-control producto-filtro">
                     <label for="producto" id="distibuidor-filtro-letras">Vendedor:</label>
                     <input type="text" id="distribuidor-filtro" class="form-control">
+                    <label for="precio-min" id="producto-filtro-letras">Precio min</label>
+                    <input type="text" name="precio-minimo" id="precio-min" class="form-control producto-filtro">
+                    <label for="producto" id="distibuidor-filtro-letras">Precio max</label>
+                    <input type="text" name="precio-maximo" id="precio-max" class="form-control">
                 </div>
                 <div class="container-btn-filtrar">
                     <button type="button" class="btn btn-primary filtrar">Filtrar

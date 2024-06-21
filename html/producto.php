@@ -67,7 +67,8 @@
                     <button type="button" class="btn-venta">Comprar</button>
 
                 </form>
-                <button type="button" class="agregar-carrito">Agregar al carrito</button>
+                <button type="button" id="<?php echo $Jsondata[0]->codigo; ?>" class="agregar-carrito">Agregar al
+                    carrito</button>
             </div>
         </div>
         <div class="decripcion">

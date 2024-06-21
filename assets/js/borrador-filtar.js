@@ -1,0 +1,145 @@
+var contador = 0;
+var arreglo = [];
+
+// Función para obtener el valor de una cookie por nombre
+function getCookie(name) {
+  let cookieArr = document.cookie.split(";");
+  for (let i = 0; i < cookieArr.length; i++) {
+    let cookiePair = cookieArr[i].split("=");
+    if (name == cookiePair[0].trim()) {
+      return decodeURIComponent(cookiePair[1]);
+    }
+  }
+  return null;
+}
+
+// Función para agregar producto a la cookie carrito
+function agregarProductoACarrito(imputvalue) {
+  let carritoCookie = getCookie("carrito");
+  let arreglo = carritoCookie ? carritoCookie.split(",") : [];
+
+  // Asegurarse de que el nuevo producto no esté ya en el carrito
+  if (!arreglo.includes(imputvalue)) {
+    arreglo.push(imputvalue);
+  }
+  // Actualizar la cookie
+  document.cookie = `carrito=${arreglo.join(",")};max-age=3600;`;
+}
+
+function reproducirCard() {
+  dataFilter.forEach((jsonDatos) => {
+    const imagePath = `http://localhost/proyecto-pagina-mayorista/pagina/uploads/${jsonDatos.imagen}`;
+    contador += 1;
+    const containerCards = `
+            <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
+                <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
+                    <form method="post" class="form-action-redirection" action="http://localhost/proyecto-pagina-mayorista/pagina/html/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
+                        <input class="input-disabled" type="text" name="code">
+                        <div class="svg-icon mx-auto mb-4">
+                            <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${jsonDatos.codigo}">
+                        </div>
+                        <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
+                        <p id="${jsonDatos.codigo}" class="id-producto">codigo de producto:${jsonDatos.codigo}</p>
+                        <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}.</p>
+                        <p id="${jsonDatos.codigo}" class="proveedor"> Proveedor: ${jsonDatos.distribuidora}.</p>
+                        <h6 id="${jsonDatos.codigo}" class="precio-producto">Precio: $${jsonDatos.precio} c/u</h6>
+                    </form>
+                    <button id=${jsonDatos.codigo} class="btn-agregar-carrito">
+                        <img width="32" height="30" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-trolley--v2.png" alt="shopping-trolley--v2" />
+                    </button>
+                </div>
+            </div>`;
+    const divCard = document.querySelector(".col-lg.contenedor-cartas");
+    divCard.innerHTML += containerCards;
+  });
+
+  // Añadir eventos después de crear las tarjetas
+  addEventListeners();
+}
+
+function cardsonload() {
+  dataFilter.forEach((jsonDatos) => {
+    if (contador < 8) {
+      const imagePath = `http://localhost/proyecto-pagina-mayorista/pagina/uploads/${jsonDatos.imagen}`;
+      contador += 1;
+      const containerCards = `
+                <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
+                    <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
+                        <form method="post" class="form-action-redirection" action="http://localhost/proyecto-pagina-mayorista/pagina/html/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
+                            <input class="input-disabled" type="text" name="code">
+                            <div class="svg-icon mx-auto mb-4">
+                                <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${jsonDatos.codigo}">
+                            </div>
+                            <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
+                            <p id="${jsonDatos.codigo}" class="id-producto">codigo de producto:${jsonDatos.codigo}</p>
+                            <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}.</p>
+                            <p id="${jsonDatos.codigo}" class="proveedor"> Proveedor: ${jsonDatos.distribuidora}.</p>
+                            <h6 id="${jsonDatos.codigo}" class="precio-producto">Precio: $${jsonDatos.precio} c/u</h6>
+                        </form>
+                        <button id="${jsonDatos.codigo}" class="btn-agregar-carrito">
+                            <img width="32" height="30" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-trolley--v2.png" alt="shopping-trolley--v2" />
+                        </button>
+                    </div>
+                </div>`;
+      const divCard = document.querySelector(".col-lg.contenedor-cartas");
+      divCard.innerHTML += containerCards;
+    }
+  });
+
+  // Añadir eventos después de cargar las tarjetas
+  addEventListeners();
+}
+
+function addEventListeners() {
+  const redirec = document.querySelectorAll(".form-action-redirection");
+  const btnAgregarcarrito = document.querySelectorAll(".btn-agregar-carrito");
+
+  redirec.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      const imputvalue = e.target.id;
+
+      document.cookie = "code=" + imputvalue + ";max-age=3600;";
+      document.location =
+        "http://localhost/proyecto-pagina-mayorista/pagina/html/producto.php";
+    });
+  });
+
+  btnAgregarcarrito.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      const imputvalue = e.target.id;
+      agregarProductoACarrito(imputvalue);
+    });
+  });
+}
+
+////scroll infinito
+const btnFiltrado = document.querySelector(".btn.btn-primary.filtrar");
+const cantidadCards = document.querySelectorAll(".wow.fadeInUp");
+
+function cargarDivs() {
+  const { clientHeight, scrollHeight, scrollTop } = document.documentElement;
+
+  if (
+    scrollTop + clientHeight > scrollHeight - 1 &&
+    dataFilter.length > contador
+  ) {
+    setTimeout(reproducirCard, 100);
+  }
+}
+
+window.addEventListener("load", function () {
+  cardsonload();
+});
+
+window.addEventListener("scroll", () => {
+  const noCoincide = document.querySelector("p.letras-no-coincide");
+  const lanzarFiltrado = document.querySelector("#filtrado-exitoso");
+
+  if (noCoincide) {
+    console.log("no ciocide");
+  } else if (lanzarFiltrado) {
+    console.log("es distinto de 0");
+  } else {
+    cargarDivs();
+  }
+});

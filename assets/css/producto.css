@@ -1,8 +1,10 @@
 .img-producto-seccion {
-  width: 100%;
+  /*width: 100%;*/
   border: rgb(192, 192, 192) solid 0.5px;
   box-shadow: grey 0px 0px 16px;
   margin-left: 37%;
+  width: 640px;
+  height: 450px;
 }
 .container-price-sale-img {
   display: flex;

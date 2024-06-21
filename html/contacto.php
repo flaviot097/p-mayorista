@@ -79,31 +79,31 @@
                     <div class="col-md-6 col-lg-5 my-3 wow fadeInUp">
                         <div class="card-page">
                             <h3 class="fw-normal">Contactanos</h3>
-                            <form method="POST" class="mt-3">
+                            <form id="form" class="mt-3">
                                 <div class="form-group">
                                     <label for="name" class="fw-medium fg-grey">Nombre y Apellido</label>
-                                    <input type="text" class="form-control" id="name">
+                                    <input type="text" name="user_name" class="form-control" id="name">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email" class="fw-medium fg-grey">Email</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <input class="form-control" id="email" type="text" name="user_email">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone" class="fw-medium fg-grey">Numero de telefono(opcional)</label>
-                                    <input type="number" class="form-control" id="phone">
+                                    <input type="number" class="form-control" id="phone" name="phone">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="message" class="fw-medium fg-grey">Mensaje</label>
-                                    <textarea rows="6" class="form-control" id="message"></textarea>
+                                    <textarea rows="6" class="form-control" name="message" id="message"></textarea>
                                 </div>
 
                                 <p>*Su información nunca será compartida con ningún tercero.</p>
 
                                 <div class="form-group mt-4">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <button type="submit" id="button" class="btn btn-primary">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -121,7 +121,11 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
+        <script type="text/javascript">
+            emailjs.init('lWPGTCPL2cFxpikT_')
+        </script>
     </div> <!-- .bg-light -->
 
 
@@ -139,5 +143,27 @@
     <script src="../assets/js/mobster.js"></script>
 
 </body>
+<script>
+    const btn = document.getElementById('button');
+
+    document.getElementById('form')
+        .addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            btn.value = 'enviando...';
+
+            const serviceID = 'default_service';
+            const templateID = 'template_jom08lp';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Enviar';
+                    alert('Enviado con exito!');
+                }, (err) => {
+                    btn.value = 'Enviar nuevamente';
+                    alert(JSON.stringify(err));
+                });
+        });
+</script>
 
 </html>

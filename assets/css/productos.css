@@ -11,7 +11,9 @@
   color: aliceblue;
 }
 
-#producto-filtro {
+#producto-filtro,
+#precio-max,
+#precio-min {
   width: 75% !important;
   border-radius: 5px;
   border-color: transparent;

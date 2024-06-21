@@ -104,3 +104,18 @@ b {
 .descubrir-productos:hover {
   color: #198724;
 }
+
+.a-comprar {
+  width: 95% !important;
+  display: block;
+  height: 100%;
+  border-radius: 15px;
+  margin-left: 2vh;
+  border-color: transparent;
+  box-shadow: rgb(144, 145, 144) 0px 0px 8px;
+  font-weight: bold;
+  background-color: rgb(78, 160, 78);
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
