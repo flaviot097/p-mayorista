@@ -87,6 +87,10 @@ if ($_GET) {
                     <input class="contrasenia-iniciar-session" name="password" type="password"></input>
                     <button type="submit" class="btn-iniciar-session">Iniciar Sesion</button>
                 </form>
+                <a href="./crear-usuario.php" class="link-nuevo-usuario">
+                    <div class="nuevo-usuario">Crear
+                        Usuario</div>
+                </a>
             </div>
         </div>
     </div>

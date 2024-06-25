@@ -11,15 +11,15 @@
 
 
 <script>
-// Obtener el dato almacenado bajo la clave 'correoElectronico'
-var correo = localStorage.getItem('correoElectronico');
-var correoObjeto;
-if (correo) {
-    // Convertir la cadena JSON a un objeto JavaScript
-    correoObjeto = JSON.parse(correo);
-    var correoJSON = JSON.stringify(correoObjeto);
-    document.cookie = "mailAenviar=" + correoJSON + "; path=/";
-}
+    // Obtener el dato almacenado bajo la clave 'correoElectronico'
+    var correo = localStorage.getItem('correoElectronico');
+    var correoObjeto;
+    if (correo) {
+        // Convertir la cadena JSON a un objeto JavaScript
+        correoObjeto = JSON.parse(correo);
+        var correoJSON = JSON.stringify(correoObjeto);
+        document.cookie = "mailAenviar=" + correoJSON + "; path=/";
+    }
 </script>
 
 <?php
@@ -29,12 +29,98 @@ if (isset($_COOKIE['mailAenviar'])) {
     $correoObjeto = json_decode($cookieValue, true);
 }
 
-// Obtener los datos del formulario
+foreach ($correoObjeto[0]["id"] as $value) {
 
-/*if (isset($_COOKIE['carrito'])) {
+    $url1 = "http://localhost:4000/inicio/respuesta/";
+    $ci = curl_init();
+    $ruta1 = $url1 . $value;
+    curl_setopt($ci, CURLOPT_URL, $ruta1);
+    curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+    $respuesta1 = curl_exec($ci);
+    if (curl_errno($ci)) {
+        $mensaje_error = curl_error($ci);
+    } else {
+        curl_close($ci);
 
-setcookie('carrito', '', time() - 3600, '/');
-}*/
+    }
+    $jsondata1 = json_decode($respuesta1);
+    $cantidad_a_modificar = $jsondata1[0]->stock;
+
+    //modificar stock
+    if (isset($respuesta1)) {
+        $url2 = "http://localhost:4000/actualizar/";
+        $ruta2 = $url2 . $value;
+        $cantidad_a_modificar = $cantidad_a_modificar - 1;
+        $array_modificado = array('stock' => $cantidad_a_modificar);
+        $data_string = json_encode($array_modificado);
+        $ch = curl_init($ruta2);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt(
+            $ch,
+            CURLOPT_HTTPHEADER,
+            array(
+
+
+                'Content-Type: application/json',
+
+
+                'Content-Length: ' . strlen($data_string)
+            )
+        );
+
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            $mensaje_error = curl_error($ch);
+        } else {
+            curl_close($ch);
+
+            $pedido_dni = $jsondata1[0]->dni;
+
+            //array_push($pedido_compra['producto'], $jsondata1[0]->producto);
+
+        }
+
+    }
+    //crear pedido
+    // Datos del pedido a enviar
+
+
+
+}
+
+$pedido_compra = array(
+    'fecha' => date("Y-m-d"),
+    'dni_comprador' => "0",
+    'dni_vendedor' => "0",
+    'codigo' => 'ABC123',
+    'total' => 100,
+    'producto' => ['Producto 1', 'Producto 2'],
+    'razon_social' => 'Empresa X',
+    'nombre_y_apellido_comprador' => 'Juan Pérez',
+    'mail' => 'juan.perez@example.com'
+);
+;
+$urlCrearPedido = 'http://localhost:4000/creacion/pedido';
+$options = array(
+    'http' => array(
+        'method' => 'POST',
+        'header' => 'Content-Type: application/json',
+        'content' => json_encode($pedido_compra)
+    )
+);
+
+$context = stream_context_create($options);
+$response = file_get_contents($urlCrearPedido, false, $context);
+
+
+
+
+if (isset($_COOKIE['carrito'])) {
+
+    setcookie('carrito', '', time() - 3600, '/');
+}
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -58,7 +144,7 @@ try {
     $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('flaviotrocello097@gmail.com', 'Mailer');
+    $mail->setFrom('flaviotrocello097@gmail.com', 'Empresa B');
     $mail->addAddress($correoObjeto[1]);     //Add a recipient
 
     //Content

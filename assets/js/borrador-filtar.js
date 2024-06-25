@@ -28,12 +28,12 @@ function agregarProductoACarrito(imputvalue) {
 
 function reproducirCard() {
   dataFilter.forEach((jsonDatos) => {
-    const imagePath = `http://localhost/proyecto-pagina-mayorista/pagina/uploads/${jsonDatos.imagen}`;
+    const imagePath = `http://localhost/pagina/uploads/${jsonDatos.imagen}`;
     contador += 1;
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                 <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
-                    <form method="post" class="form-action-redirection" action="http://localhost/proyecto-pagina-mayorista/pagina/html/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
+                    <form method="post" class="form-action-redirection" action="http://localhost/pagina/html/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
                         <input class="input-disabled" type="text" name="code">
                         <div class="svg-icon mx-auto mb-4">
                             <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${jsonDatos.codigo}">
@@ -60,12 +60,12 @@ function reproducirCard() {
 function cardsonload() {
   dataFilter.forEach((jsonDatos) => {
     if (contador < 8) {
-      const imagePath = `http://localhost/proyecto-pagina-mayorista/pagina/uploads/${jsonDatos.imagen}`;
+      const imagePath = `http://localhost/pagina/uploads/${jsonDatos.imagen}`;
       contador += 1;
       const containerCards = `
                 <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                     <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
-                        <form method="post" class="form-action-redirection" action="http://localhost/proyecto-pagina-mayorista/pagina/html/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
+                        <form method="post" class="form-action-redirection" action="http://localhost/pagina/html/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
                             <input class="input-disabled" type="text" name="code">
                             <div class="svg-icon mx-auto mb-4">
                                 <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${jsonDatos.codigo}">
@@ -99,8 +99,7 @@ function addEventListeners() {
       const imputvalue = e.target.id;
 
       document.cookie = "code=" + imputvalue + ";max-age=3600;";
-      document.location =
-        "http://localhost/proyecto-pagina-mayorista/pagina/html/producto.php";
+      document.location = "http://localhost/pagina/html/producto.php";
     });
   });
 

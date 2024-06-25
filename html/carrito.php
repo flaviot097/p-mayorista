@@ -69,6 +69,7 @@
                         $cantidad = 0;
                         $total = 0;
                         $prodUltimo = "";
+                        $codigo_id = array();
 
                         if (isset($_COOKIE["carrito"]) && !empty($_COOKIE["carrito"])) {
                             $items = trim($_COOKIE["carrito"]);
@@ -95,6 +96,7 @@
                                     foreach ($Jsondata as $valor) {
                                         $cantidad = $cantidad + 1;
                                         $prodUltimo = $valor->producto;
+                                        array_push($codigo_id, $valor->codigo);
                                         $total += floatval($valor->precio);
                                         ?>
                         <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
@@ -211,9 +213,9 @@
 
 <?php require_once ("./footer.php");
 if ($_SESSION) {
-    $_SESSION['datos'] = array('total' => $total, 'cantidad' => $cantidad, "producto" => $prodUltimo);
+    $_SESSION['datos'] = array('total' => $total, 'cantidad' => $cantidad, "producto" => $prodUltimo, "id" => $codigo_id);
 }
-$datos = array('total' => $total, 'cantidad' => $cantidad, "producto" => $prodUltimo);
+$datos = array('total' => $total, 'cantidad' => $cantidad, "producto" => $prodUltimo, "id" => $codigo_id);
 
 include './vendor/checkout/server/php/server.php';
 ?>
@@ -237,8 +239,7 @@ document.getElementById('emailForm').addEventListener('submit', function(event) 
 <div class="overlay" id="emailPopup">
     <div class="popup">
         <h2>Ingrese su Email</h2>
-        <form id="emailForm" method="post"
-            action="http://localhost/proyecto-pagina-mayorista/pagina/vendor/checkout/server/php/server.php">
+        <form id="emailForm" method="post" action="http://localhost/pagina/vendor/checkout/server/php/server.php">
             <input type="email" id="email" name="email" placeholder="Email" required>
             <button type="submit">Enviar</button>
         </form>

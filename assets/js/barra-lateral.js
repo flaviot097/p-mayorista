@@ -12,34 +12,28 @@ const btnModificarPublicacion = document.getElementById(
 const btnventas = document.getElementById("ventas");
 
 btnCrearPublicacion.addEventListener("click", () => {
-  window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/crear-producto.php";
+  window.location.href = "http://localhost/pagina/html/crear-producto.php";
 });
 
 btnEditarUsuario.addEventListener("click", () => {
-  window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/editar-usuario.php";
+  window.location.href = "http://localhost/pagina/html/editar-usuario.php";
 });
 
 btnEstadisticas.addEventListener("click", () => {
-  window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/estadisticas.php";
+  window.location.href = "http://localhost/pagina/html/estadisticas.php";
 });
 
 btnFacturacion.addEventListener("click", () => {
-  window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/facturacion.php";
+  window.location.href = "http://localhost/pagina/html/facturacion.php";
 });
 
 btnStock.addEventListener("click", () => {
-  window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/stock.php";
+  window.location.href = "http://localhost/pagina/html/stock.php";
 });
 btnModificarPublicacion.addEventListener("click", () => {
   window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/modificar-publicaccion.php";
+    "http://localhost/pagina/html/modificar-publicaccion.php";
 });
 btnventas.addEventListener("click", () => {
-  window.location.href =
-    "http://localhost/proyecto-pagina-mayorista/pagina/html/eliminar.php";
+  window.location.href = "http://localhost/pagina/html/eliminar.php";
 });

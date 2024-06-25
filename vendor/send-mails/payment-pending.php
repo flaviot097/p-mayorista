@@ -40,6 +40,19 @@
         font-size: 18px;
         line-height: 1.6;
     }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
     </style>
 </head>
 
@@ -54,6 +67,7 @@
         <h1>¡Compra Fallida!</h1>
         <p>Lo sentimos, ha ocurrido un problema durante la compra</p>
         <p>Intenta mas tarde, o contactate con la plataforma o banco con el que realizaste el pago.</p>
+        <a href="../../html/carrito.php" class="btn">Volver al Inicio</a>
     </div>
 </body>
 

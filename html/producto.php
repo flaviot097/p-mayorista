@@ -51,8 +51,7 @@
 
     <div class="contenedor-carta-producto">
         <div class="container-price-sale-img">
-            <div class="container-img"><img
-                    src="http://localhost/proyecto-pagina-mayorista/pagina/uploads/<?php echo $Jsondata[0]->imagen; ?>"
+            <div class="container-img"><img src="http://localhost/pagina/uploads/<?php echo $Jsondata[0]->imagen; ?>"
                     alt="" class="img-producto-seccion">
             </div>
             <div class="sale-price">
