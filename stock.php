@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina-Productos</title>
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="../assets/css/maicons.css">
+    <link rel="stylesheet" href="./assets/css/maicons.css">
 
-    <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+    <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
 
-    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="../assets/css/mobster.css">
+    <link rel="stylesheet" href="./assets/css/mobster.css">
 
-    <link rel="stylesheet" href="../assets/css/productos.css">
-    <link rel="stylesheet" href="../assets/css/barra-lateral-usuario.css">
-    <link rel="stylesheet" href="../assets/css/stock.css">
+    <link rel="stylesheet" href="./assets/css/productos.css">
+    <link rel="stylesheet" href="./assets/css/barra-lateral-usuario.css">
+    <link rel="stylesheet" href="./assets/css/stock.css">
 </head>
 <?php
 session_start();
@@ -48,7 +48,7 @@ if (curl_errno($ci)) {
 <?php echo "<script> var datosProductos=$respuesta</script>"; ?>
 
 <body>
-    <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
+    <div class="backgaund-imagen" style="background-image: url(./assets/img/bg_hero_2.svg)">
     </div>
 
 
@@ -58,7 +58,7 @@ if (curl_errno($ci)) {
     <nav class="navbar navbar-expand-lg navbar-light navbar-floating">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="../assets/favicon.png" alt="" width="40" />
+                <img src="./assets/favicon.png" alt="" width="40" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
                 aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,11 +84,11 @@ if (curl_errno($ci)) {
                     </li>
                 </ul>
                 <div class="ml-auto my-2 my-lg-0"><?php if (isset($_SESSION["usuario"])) { ?>
-                        <a href="./estadisticas.php"> <button class="btn btn-dark rounded-pill usuario-iniciado"
-                                id="usuario-logeado"><img class="usuario-iniciado" src="../assets/img/usuario-iniciado.png"
+                        <a href="/estadisticas.php"> <button class="btn btn-dark rounded-pill usuario-iniciado"
+                                id="usuario-logeado"><img class="usuario-iniciado" src="./assets/img/usuario-iniciado.png"
                                     alt="usuario"><?php echo $usuario; ?>
                             </button></a>
-                        <a href="./destruir-session.php"><button class="btn btn-dark rounded-pill">Cerrar
+                        <a href="destruir-session.php"><button class="btn btn-dark rounded-pill">Cerrar
                                 Sesion</button></a><?php
                 } else { ?>
 
@@ -102,7 +102,7 @@ if (curl_errno($ci)) {
         </div>
     </nav>
     <div class="conteiner-cuerpo">
-        <?php require_once ("./barra-lateral-usuario.php"); ?>
+        <?php require_once ("barra-lateral-usuario.php"); ?>
 
         <div class="contenedor-card-productos">
             <div class="col justify-content-center mt-5">
@@ -117,9 +117,9 @@ if (curl_errno($ci)) {
 
 
 </body>
-<?php require_once ("./footer.php"); ?>
-<script src="../assets/js/barra-lateral.js"></script>
-<script src="../assets/js/cartas-prod-stock.js"></script>
-<script src="../assets/js/filtro-stock.js"></script>
+<?php require_once ("footer.php"); ?>
+<script src="./assets/js/barra-lateral.js"></script>
+<script src="./assets/js/cartas-prod-stock.js"></script>
+<script src="./assets/js/filtro-stock.js"></script>
 
 </html>

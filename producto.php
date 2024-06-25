@@ -5,27 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina-Productos</title>
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="../assets/css/maicons.css">
+    <link rel="stylesheet" href="./assets/css/maicons.css">
 
-    <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+    <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
 
-    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="../assets/css/mobster.css">
+    <link rel="stylesheet" href="./assets/css/mobster.css">
 
-    <link rel="stylesheet" href="../assets/css/productos.css">
-    <link rel="stylesheet" href="../assets/css/producto.css">
+    <link rel="stylesheet" href="./assets/css/productos.css">
+    <link rel="stylesheet" href="./assets/css/producto.css">
 
 </head>
 
 <body>
-    <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
+    <div class="backgaund-imagen" style="background-image: url(./assets/img/bg_hero_2.svg)">
     </div>
-    <?php require_once ("./header.php");
+    <?php require_once ("header.php");
 
     $code = strval($_COOKIE["code"]);
 
@@ -51,8 +51,9 @@
 
     <div class="contenedor-carta-producto">
         <div class="container-price-sale-img">
-            <div class="container-img"><img src="http://localhost/pagina/uploads/<?php echo $Jsondata[0]->imagen; ?>"
-                    alt="" class="img-producto-seccion">
+            <div class="container-img"><img
+                    src="https://pagina-empresab.000webhostapp.com/uploads/<?php echo $Jsondata[0]->imagen; ?>" alt=""
+                    class="img-producto-seccion">
             </div>
             <div class="sale-price">
                 <h2 class="nombre-producto"><?php echo strtoupper($Jsondata[0]->producto); ?></h2>
@@ -76,10 +77,10 @@
     </div>
 
 </body>
-<?php require_once ("./footer.php"); ?>
+<?php require_once ("footer.php"); ?>
 
 
-<script src="../assets/js/carrito.js"></script>
+<script src="./assets/js/carrito.js"></script>
 
 
 

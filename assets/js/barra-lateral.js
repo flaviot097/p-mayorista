@@ -12,28 +12,33 @@ const btnModificarPublicacion = document.getElementById(
 const btnventas = document.getElementById("ventas");
 
 btnCrearPublicacion.addEventListener("click", () => {
-  window.location.href = "http://localhost/pagina/html/crear-producto.php";
+  window.location.href =
+    "https://pagina-empresab.000webhostapp.com/crear-producto.php";
 });
 
 btnEditarUsuario.addEventListener("click", () => {
-  window.location.href = "http://localhost/pagina/html/editar-usuario.php";
+  window.location.href =
+    "https://pagina-empresab.000webhostapp.com/editar-usuario.php";
 });
 
 btnEstadisticas.addEventListener("click", () => {
-  window.location.href = "http://localhost/pagina/html/estadisticas.php";
+  window.location.href =
+    "https://pagina-empresab.000webhostapp.com/estadisticas.php";
 });
 
 btnFacturacion.addEventListener("click", () => {
-  window.location.href = "http://localhost/pagina/html/facturacion.php";
+  window.location.href =
+    "https://pagina-empresab.000webhostapp.com/facturacion.php";
 });
 
 btnStock.addEventListener("click", () => {
-  window.location.href = "http://localhost/pagina/html/stock.php";
+  window.location.href = "https://pagina-empresab.000webhostapp.com/stock.php";
 });
 btnModificarPublicacion.addEventListener("click", () => {
   window.location.href =
-    "http://localhost/pagina/html/modificar-publicaccion.php";
+    "https://pagina-empresab.000webhostapp.com/modificar-publicaccion.php";
 });
 btnventas.addEventListener("click", () => {
-  window.location.href = "http://localhost/pagina/html/eliminar.php";
+  window.location.href =
+    "https://pagina-empresab.000webhostapp.com/eliminar.php";
 });

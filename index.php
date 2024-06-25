@@ -11,23 +11,23 @@
 
     <title>Pagina</title>
 
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
 
-    <link rel="stylesheet" href="../assets/css/maicons.css" />
+    <link rel="stylesheet" href="./assets/css/maicons.css" />
 
-    <link rel="stylesheet" href="../assets/vendor/animate/animate.css" />
+    <link rel="stylesheet" href="./assets/vendor/animate/animate.css" />
 
-    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css" />
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
 
-    <link rel="stylesheet" href="../assets/css/mobster.css" />
+    <link rel="stylesheet" href="./assets/css/mobster.css" />
 </head>
 
 <body>
-    <?php include ("./header.php"); ?>
+    <?php include ("header.php"); ?>
 
-    <div class="page-hero-section bg-image hero-home-1" style="background-image: url(../assets/img/bg_hero_2.svg)">
+    <div class="page-hero-section bg-image hero-home-1" style="background-image: url(./assets/img/bg_hero_2.svg)">
         <div class="hero-caption pt-5">
             <div class="container h-100">
                 <div class="row align-items-center h-100">
@@ -46,9 +46,9 @@
                             diferentes variables (Ventas,Compras,Rango de Precios,etc.).
                         </p>
                         <?php if (isset($_SESSION["usuario"])) { ?>
-                            <a href="./publicaciones-activas.php" class="btn btn-primary rounded-pill">¡Ir a menu! </a>
+                            <a href="publicaciones-activas.php" class="btn btn-primary rounded-pill">¡Ir a menu! </a>
                         <?php } else { ?>
-                            <a href="./session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
+                            <a href="session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
                         ; ?>
                     </div>
                     <div class="col-lg-6 d-none d-lg-block wow zoomIn">
@@ -68,22 +68,22 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3 py-3 wow zoomIn">
                     <div class="img-place client-img">
-                        <img src="../assets/img" alt="" />Sancor
+                        <img src="./assets/img" alt="" />Sancor
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 py-3 wow zoomIn">
                     <div class="img-place client-img">
-                        <img src="../assets/img/" alt="" />LW
+                        <img src="./assets/img/" alt="" />LW
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 py-3 wow zoomIn">
                     <div class="img-place client-img">
-                        <img src="../assets/img/" alt="" />Gabio
+                        <img src="./assets/img/" alt="" />Gabio
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 py-3 wow zoomIn">
                     <div class="img-place client-img">
-                        <img src="../assets/img/" alt="" />RPP
+                        <img src="./assets/img/" alt="" />RPP
                     </div>
                 </div>
             </div>
@@ -158,14 +158,14 @@
                             funcionalidades.
                         </p>
                         <?php if (isset($_SESSION["usuario"])) { ?>
-                            <a href="./stock.php" class="btn btn-primary rounded-pill">¡Controlar stock! </a>
+                            <a href="stock.php" class="btn btn-primary rounded-pill">¡Controlar stock! </a>
                         <?php } else { ?>
-                            <a href="./session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
+                            <a href="session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
                         ; ?>
                     </div>
                     <div class="col-lg-5 py-3">
                         <div class="img-place mobile-preview shadow wow zoomIn">
-                            <img src="../assets/img/imagen-menu-foto.png" alt="" />
+                            <img src="./assets/img/imagen-menu-foto.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                 <div class="col-md-6 col-lg-3 py-3">
                     <div class="card card-body border-0 bg-transparent text-center wow zoomIn">
                         <div class="mb-3">
-                            <img src="../assets/img/icons/rocket.svg" alt="" />
+                            <img src="./assets/img/icons/rocket.svg" alt="" />
                         </div>
                         <p class="fs-large">Muy rapida</p>
                         <p class="fs-small fg-grey">
@@ -192,7 +192,7 @@
                 <div class="col-md-6 col-lg-3 py-3">
                     <div class="card card-body border-0 bg-transparent text-center wow zoomIn" data-wow-delay="200ms">
                         <div class="mb-3">
-                            <img src="../assets/img/icons/testimony.svg" alt="" />
+                            <img src="./assets/img/icons/testimony.svg" alt="" />
                         </div>
                         <p class="fs-large">Clientes Satisfechos</p>
                         <p class="fs-small fg-grey">
@@ -203,7 +203,7 @@
                 <div class="col-md-6 col-lg-3 py-3">
                     <div class="card card-body border-0 bg-transparent text-center wow zoomIn" data-wow-delay="400ms">
                         <div class="mb-3">
-                            <img src="../assets/img/icons/promotion.svg" alt="" />
+                            <img src="./assets/img/icons/promotion.svg" alt="" />
                         </div>
                         <p class="fs-large">Crea publicaciones</p>
                         <p class="fs-small fg-grey">
@@ -214,7 +214,7 @@
                 <div class="col-md-6 col-lg-3 py-3">
                     <div class="card card-body border-0 bg-transparent text-center wow zoomIn" data-wow-delay="600ms">
                         <div class="mb-3">
-                            <img src="../assets/img/icons/coins.svg" alt="" />
+                            <img src="./assets/img/icons/coins.svg" alt="" />
                         </div>
                         <p class="fs-large">Controla tu capital</p>
                         <p class="fs-small fg-grey">
@@ -226,7 +226,7 @@
                 <div class="col-md-6 col-lg-3 py-3">
                     <div class="card card-body border-0 bg-transparent text-center wow zoomIn" data-wow-delay="800ms">
                         <div class="mb-3">
-                            <img src="../assets/img/icons/support.svg" alt="" />
+                            <img src="./assets/img/icons/support.svg" alt="" />
                         </div>
                         <p class="fs-large">Soporte 24/7</p>
                         <p class="fs-small fg-grey">
@@ -237,7 +237,7 @@
                 <div class="col-md-6 col-lg-3 py-3">
                     <div class="card card-body border-0 bg-transparent text-center wow zoomIn" data-wow-delay="1000ms">
                         <div class="mb-3">
-                            <img src="../assets/img/icons/laptop.svg" alt="" />
+                            <img src="./assets/img/icons/laptop.svg" alt="" />
                         </div>
                         <p class="fs-large">Funciones</p>
                         <p class="fs-small fg-grey">
@@ -255,7 +255,7 @@
             <div class="row">
                 <div class="col-lg-7 py-3 mb-5 mb-lg-0">
                     <div class="img-place w-lg-75 wow zoomIn">
-                        <img src="../assets/img/illustration_contact.svg" alt="" />
+                        <img src="./assets/img/illustration_contact.svg" alt="" />
                     </div>
                 </div>
                 <div class="col-lg-5 py-3">
@@ -295,17 +295,17 @@
         </div>
     </div>
 
-    <?php include ('./footer.php'); ?>
+    <?php include ('footer.php'); ?>
 
-    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+    <script src="./assets/js/jquery-3.5.1.min.js"></script>
 
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="./assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
-    <script src="../assets/vendor/wow/wow.min.js"></script>
+    <script src="./assets/vendor/wow/wow.min.js"></script>
 
-    <script src="../assets/js/mobster.js"></script>
+    <script src="./assets/js/mobster.js"></script>
 </body>
 <script>
     const btn = document.getElementById('button');

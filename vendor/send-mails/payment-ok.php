@@ -11,15 +11,15 @@
 
 
 <script>
-    // Obtener el dato almacenado bajo la clave 'correoElectronico'
-    var correo = localStorage.getItem('correoElectronico');
-    var correoObjeto;
-    if (correo) {
-        // Convertir la cadena JSON a un objeto JavaScript
-        correoObjeto = JSON.parse(correo);
-        var correoJSON = JSON.stringify(correoObjeto);
-        document.cookie = "mailAenviar=" + correoJSON + "; path=/";
-    }
+// Obtener el dato almacenado bajo la clave 'correoElectronico'
+var correo = localStorage.getItem('correoElectronico');
+var correoObjeto;
+if (correo) {
+    // Convertir la cadena JSON a un objeto JavaScript
+    correoObjeto = JSON.parse(correo);
+    var correoJSON = JSON.stringify(correoObjeto);
+    document.cookie = "mailAenviar=" + correoJSON + "; path=/";
+}
 </script>
 
 <?php

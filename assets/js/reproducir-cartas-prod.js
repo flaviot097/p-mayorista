@@ -28,11 +28,11 @@ function agregarProductoACarrito(imputvalue) {
 
 function renderCards(productos) {
   productos.forEach((jsonDatos) => {
-    const imagePath = `http://localhost/pagina/uploads/${jsonDatos.imagen}`;
+    const imagePath = `https://pagina-empresab.000webhostapp.com/uploads/${jsonDatos.imagen}`;
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                 <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
-                    <form method="post" class="form-action-redirection" action="http://localhost/pagina/html/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
+                    <form method="post" class="form-action-redirection" action="https://pagina-empresab.000webhostapp.com/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
                         <input class="input-disabled" type="text" name="code">
                         <div class="svg-icon mx-auto mb-4">
                             <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${jsonDatos.codigo}">
@@ -76,7 +76,8 @@ function addEventListeners() {
     element.addEventListener("click", (e) => {
       const imputvalue = e.target.id;
       document.cookie = "code=" + imputvalue + ";max-age=3600;";
-      document.location = "http://localhost/pagina/html/producto.php";
+      document.location =
+        "https://pagina-empresab.000webhostapp.com/producto.php";
     });
   });
 

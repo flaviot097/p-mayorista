@@ -20,7 +20,7 @@
             <div class="col-md-6 col-lg-4 py-3">
                 <h5 class="mb-3">Contacto</h5>
                 <ul class="menu-link">
-                    <li><a href="./contacto.php" class="">Contactos</a></li>
+                    <li><a href="/contacto.php" class="">Contactos</a></li>
                     <li><a href="#" class="">Andres Pasos 101</a></li>
                     <li><a href="#" class="">blabla@.com</a></li>
                     <li><a href="#" class="">0800 4547</a></li>
@@ -56,7 +56,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 py-2">
-                <img src="../assets/favicon-light.png" alt="" width="40" />
+                <img src="./assets/favicon-light.png" alt="" width="40" />
                 <!-- Please don't remove or modify the credits below -->
                 <p class="d-inline-block ml-2">
                     Copyright &copy;
@@ -77,10 +77,9 @@
         </div>
     </div>
 </div>
-<script src="../assets/js/jquery-3.5.1.min.js"></script>
+<script src="./assets/js/jquery-3.5.1.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/mobster.js"></script>
 
-<script src="../assets/js/mobster.js"></script>
-
-<script src="../assets/js/iniciar-session.js"></script>
+<script src="./assets/js/iniciar-session.js"></script>

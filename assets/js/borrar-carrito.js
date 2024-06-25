@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const ruta = "http://localhost/pagina/html/carrito.php";
+  const ruta = "https://pagina-empresab.000webhostapp.com/carrito.php";
   const btnBorrar = document.querySelectorAll(".img-eliminar");
 
   btnBorrar.forEach((btn) => {

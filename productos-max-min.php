@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina-Productos</title>
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="../assets/css/maicons.css">
+    <link rel="stylesheet" href="./assets/css/maicons.css">
 
-    <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+    <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
 
-    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="../assets/css/mobster.css">
+    <link rel="stylesheet" href="./assets/css/mobster.css">
 
-    <link rel="stylesheet" href="../assets/css/productos.css">
+    <link rel="stylesheet" href="./assets/css/productos.css">
 </head>
 
 <body>
-    <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
+    <div class="backgaund-imagen" style="background-image: url(./assets/img/bg_hero_2.svg)">
     </div>
-    <?php require_once ("./header.php");
+    <?php require_once ("header.php");
 
     $ci = curl_init();
 
@@ -132,9 +132,9 @@
 
 
 </body>
-<?php require_once ("./footer.php"); ?>
-<script src="../assets/js/reproducir-cartas-prod.js"></script>
-<script src="../assets/js/filtrar.js"></script>
+<?php require_once ("footer.php"); ?>
+<script src="./assets/js/reproducir-cartas-prod.js"></script>
+<script src="./assets/js/filtrar.js"></script>
 
 
 

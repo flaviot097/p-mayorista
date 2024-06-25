@@ -13,22 +13,22 @@
 
     <title>Pagina-contacto</title>
 
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="../assets/css/maicons.css">
+    <link rel="stylesheet" href="./assets/css/maicons.css">
 
-    <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+    <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
 
-    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="../assets/css/mobster.css">
+    <link rel="stylesheet" href="./assets/css/mobster.css">
 </head>
 
 <body>
 
-    <?php include './header.php'; ?>
+    <?php include 'header.php'; ?>
 
     <div class="bg-light">
 
@@ -40,7 +40,7 @@
                             <h3 class="mb-4 fw-medium">Contacto</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb breadcrumb-dark justify-content-center bg-transparent">
-                                    <li class="breadcrumb-item"><a href="./index.php">Inicio</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Contacto</li>
                                 </ol>
                             </nav>
@@ -130,17 +130,17 @@
 
 
     <!-- footer -->
-    <?php include_once './footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
 
-    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+    <script src="./assets/js/jquery-3.5.1.min.js"></script>
 
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="./assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
-    <script src="../assets/vendor/wow/wow.min.js"></script>
+    <script src="./assets/vendor/wow/wow.min.js"></script>
 
-    <script src="../assets/js/mobster.js"></script>
+    <script src="./assets/js/mobster.js"></script>
 
 </body>
 <script>
