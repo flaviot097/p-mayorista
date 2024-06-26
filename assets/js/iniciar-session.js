@@ -1,8 +1,7 @@
 const btnIniciarSession = document.querySelector(".btn.btn-dark.rounded-pill");
 
 btnIniciarSession.addEventListener("click", () => {
-  window.location.href =
-    "https://pagina-empresab.000webhostapp.com/session.php";
+  window.location.href = "https://p-mayorista.onrender.com/session.php";
 });
 
 ///cabmbiar color de seccion seleccionada

@@ -74,7 +74,7 @@ if ($_GET) {
 ?>
 
 <body>
-    <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
+    <div class="backgaund-imagen" style="background-image: url(./assets/img/bg_hero_2.svg)">
     </div>
     <?php require_once ("header.php"); ?>
     <div class="conteiner-cuerpo">

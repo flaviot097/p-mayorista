@@ -12,33 +12,28 @@ const btnModificarPublicacion = document.getElementById(
 const btnventas = document.getElementById("ventas");
 
 btnCrearPublicacion.addEventListener("click", () => {
-  window.location.href =
-    "https://pagina-empresab.000webhostapp.com/crear-producto.php";
+  window.location.href = "https://p-mayorista.onrender.com/crear-producto.php";
 });
 
 btnEditarUsuario.addEventListener("click", () => {
-  window.location.href =
-    "https://pagina-empresab.000webhostapp.com/editar-usuario.php";
+  window.location.href = "https://p-mayorista.onrender.com/editar-usuario.php";
 });
 
 btnEstadisticas.addEventListener("click", () => {
-  window.location.href =
-    "https://pagina-empresab.000webhostapp.com/estadisticas.php";
+  window.location.href = "https://p-mayorista.onrender.com/estadisticas.php";
 });
 
 btnFacturacion.addEventListener("click", () => {
-  window.location.href =
-    "https://pagina-empresab.000webhostapp.com/facturacion.php";
+  window.location.href = "https://p-mayorista.onrender.com/facturacion.php";
 });
 
 btnStock.addEventListener("click", () => {
-  window.location.href = "https://pagina-empresab.000webhostapp.com/stock.php";
+  window.location.href = "https://p-mayorista.onrender.com/stock.php";
 });
 btnModificarPublicacion.addEventListener("click", () => {
   window.location.href =
-    "https://pagina-empresab.000webhostapp.com/modificar-publicaccion.php";
+    "https://p-mayorista.onrender.com/modificar-publicaccion.php";
 });
 btnventas.addEventListener("click", () => {
-  window.location.href =
-    "https://pagina-empresab.000webhostapp.com/eliminar.php";
+  window.location.href = "https://p-mayorista.onrender.com/eliminar.php";
 });

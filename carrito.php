@@ -101,8 +101,8 @@
                                         ?>
                                         <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
                                             <div class="svg-icon mx-auto mb-4 contenedor-foto-nombre">
-                                                <img src="https://pagina-empresab.000webhostapp.com/uploads/<?php echo $valor->imagen; ?>"
-                                                    alt="" class="img-productos">
+                                                <img src="https://p-mayorista.onrender.com/uploads/<?php echo $valor->imagen; ?>" alt=""
+                                                    class="img-productos">
                                                 <h5 class="fg-gray nombre-producto" id="nombre-producto">
                                                     <?php echo $valor->producto; ?>
                                                 </h5>
@@ -240,7 +240,7 @@ $datos = array('total' => $total, 'cantidad' => $cantidad, "producto" => $prodUl
     <div class="popup">
         <h2>Ingrese su Email</h2>
         <form id="emailForm" method="post"
-            action="https://pagina-empresab.000webhostapp.com/vendor/checkout/server/php/server.php">
+            action="https://p-mayorista.onrender.com/vendor/checkout/server/php/server.php">
             <input type="email" id="email" name="email" placeholder="Email" required>
             <button type="submit">Enviar</button>
         </form>

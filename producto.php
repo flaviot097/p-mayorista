@@ -52,7 +52,7 @@
     <div class="contenedor-carta-producto">
         <div class="container-price-sale-img">
             <div class="container-img"><img
-                    src="https://pagina-empresab.000webhostapp.com/uploads/<?php echo $Jsondata[0]->imagen; ?>" alt=""
+                    src="https://p-mayorista.onrender.com/uploads/<?php echo $Jsondata[0]->imagen; ?>" alt=""
                     class="img-producto-seccion">
             </div>
             <div class="sale-price">
