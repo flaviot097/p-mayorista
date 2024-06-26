@@ -1,0 +1,7 @@
+DirectoryIndex index.php index.html
+
+Options -Indexes
+
+<FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
