@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
+    <div class="backgaund-imagen" style="background-image: url(./assets/img/bg_hero_2.svg)">
     </div>
     <?php require_once ("header.php"); ?>
     <div class="conteiner-cuerpo">
@@ -63,7 +63,7 @@
         if (!empty($_POST["codigo"])) {
             $dni = $_COOKIE["usuario"];
             $codigo = $_POST["codigo"];
-            $url = "http://localhost:4000/inicio/" . $codigo;
+            $url = "https://api-8cf6.onrender.com/inicio/" . $codigo;
             $ci = curl_init();
             curl_setopt($ci, CURLOPT_URL, $url);
             curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');
@@ -97,7 +97,7 @@
         // Función para eliminar usuario
         function eliminarUsuario($dni)
         {
-            $url = "http://localhost:4000/eliminacion/" . urlencode($dni);
+            $url = "https://api-8cf6.onrender.com/eliminacion/" . urlencode($dni);
             $ci = curl_init();
             curl_setopt($ci, CURLOPT_URL, $url);
             curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');

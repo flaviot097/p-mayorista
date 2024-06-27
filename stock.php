@@ -29,7 +29,7 @@ if (isset($_SESSION['usuario'])) {
 ;
 $ci = curl_init();
 $dni = $_COOKIE["usuario"];
-$url = "http://localhost:4000/documento/" . $dni;
+$url = "https://api-8cf6.onrender.com/documento/" . $dni;
 
 curl_setopt($ci, CURLOPT_URL, $url);
 

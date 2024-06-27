@@ -63,7 +63,7 @@
 
 
 
-        $url = "http://localhost:4000/actualizar/" . $codigo;
+        $url = "https://api-8cf6.onrender.com/actualizar/" . $codigo;
 
         $array =
             array(

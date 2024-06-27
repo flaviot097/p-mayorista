@@ -23,7 +23,7 @@
 </head>
 <?php $cu = curl_init();
 $dni = $_COOKIE["usuario"];
-$url = "http://localhost:4000/ventas/" . $dni;
+$url = "https://api-8cf6.onrender.com/ventas/" . $dni;
 curl_setopt($cu, CURLOPT_URL, $url);
 curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
 $respuesta = curl_exec($cu);

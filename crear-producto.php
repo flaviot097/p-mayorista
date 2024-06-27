@@ -71,7 +71,7 @@ if ($_POST) {
         $imagen = $_FILES['img']['tmp_name'];
 
         // Inicializa cURL
-        $url = "http://localhost:4000/inicio/crearProducto";
+        $url = "https://api-8cf6.onrender.com/inicio/crearProducto";
         $curl = curl_init($url);
 
 

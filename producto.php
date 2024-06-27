@@ -31,7 +31,7 @@
 
     $ci = curl_init();
 
-    $url = "http://localhost:4000/inicio/respuesta/" . $code;
+    $url = "https://api-8cf6.onrender.com/inicio/respuesta/" . $code;
     curl_setopt($ci, CURLOPT_URL, $url);
 
     curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);

@@ -31,7 +31,7 @@ if ($_POST) {
         $distribuidora = $_POST["distribuidora"];
         $email = $_POST["mail"];
 
-        $url = "http://localhost:4000/creacion";
+        $url = "https://api-8cf6.onrender.com/creacion";
 
         $array = array(
             'dni' => $dni,

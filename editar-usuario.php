@@ -66,7 +66,7 @@
 
         $dni = $_COOKIE['usuario'];
 
-        $url = "http://localhost:4000/usuarioactualizar/" . $dni;
+        $url = "https://api-8cf6.onrender.com/usuarioactualizar/" . $dni;
 
         $array =
             array(

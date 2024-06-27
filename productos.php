@@ -27,7 +27,7 @@
 
     $ci = curl_init();
 
-    $url = "http://localhost:4000/inicio";
+    $url = "https://api-8cf6.onrender.com/inicio";
 
     curl_setopt($ci, CURLOPT_URL, $url);
 

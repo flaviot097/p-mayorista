@@ -29,7 +29,7 @@ if ($_GET) {
 
         $ci = curl_init();
 
-        $url = "http://localhost:4000/validacion/dni/" . $dni;
+        $url = "https://api-8cf6.onrender.com/validacion/dni/" . $dni;
 
         curl_setopt($ci, CURLOPT_URL, $url);
 

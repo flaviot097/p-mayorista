@@ -80,7 +80,7 @@
 
                             foreach ($separada as $item) {
                                 $ci = curl_init();
-                                $url = "http://localhost:4000/inicio/respuesta/" . trim($item);
+                                $url = "https://api-8cf6.onrender.com/inicio/respuesta/" . trim($item);
                                 curl_setopt($ci, CURLOPT_URL, $url);
                                 curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
                                 $respuesta = curl_exec($ci);
