@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./assets/css/productos.css">
     <link rel="stylesheet" href="./assets/css/barra-lateral-usuario.css">
     <link rel="stylesheet" href="./assets/css/estadisticas.css">
+    <script type="module" src="../assets/js/estadisticas.js"></script>
 </head>
 <?php $cu = curl_init();
 $dni = $_COOKIE["usuario"];
