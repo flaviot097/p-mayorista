@@ -46,9 +46,9 @@
                             diferentes variables (Ventas,Compras,Rango de Precios,etc.).
                         </p>
                         <?php if (isset($_SESSION["usuario"])) { ?>
-                            <a href="publicaciones-activas.php" class="btn btn-primary rounded-pill">¡Ir a menu! </a>
+                        <a href="publicaciones-activas.php" class="btn btn-primary rounded-pill">¡Ir a menu! </a>
                         <?php } else { ?>
-                            <a href="session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
+                        <a href="session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
                         ; ?>
                     </div>
                     <div class="col-lg-6 d-none d-lg-block wow zoomIn">
@@ -158,9 +158,9 @@
                             funcionalidades.
                         </p>
                         <?php if (isset($_SESSION["usuario"])) { ?>
-                            <a href="stock.php" class="btn btn-primary rounded-pill">¡Controlar stock! </a>
+                        <a href="stock.php" class="btn btn-primary rounded-pill">¡Controlar stock! </a>
                         <?php } else { ?>
-                            <a href="session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
+                        <a href="session.php" class="btn btn-primary rounded-pill">¡Registrarse ahora!</a><?php }
                         ; ?>
                     </div>
                     <div class="col-lg-5 py-3">
@@ -288,7 +288,7 @@
                         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
                     <script type="text/javascript">
-                        emailjs.init('lWPGTCPL2cFxpikT_')
+                    emailjs.init('lWPGTCPL2cFxpikT_')
                     </script>
                 </div>
             </div>
@@ -308,26 +308,26 @@
     <script src="./assets/js/mobster.js"></script>
 </body>
 <script>
-    const btn = document.getElementById('button');
+const btn = document.getElementById('button');
 
-    document.getElementById('form')
-        .addEventListener('submit', function (event) {
-            event.preventDefault();
+document.getElementById('form')
+    .addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            btn.value = 'enviando...';
+        btn.value = 'enviando...';
 
-            const serviceID = 'default_service';
-            const templateID = 'template_jom08lp';
+        const serviceID = 'default_service';
+        const templateID = 'template_jom08lp';
 
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    btn.value = 'Enviar email';
-                    alert('Enviado!');
-                }, (err) => {
-                    btn.value = 'Enviar mail';
-                    alert(JSON.stringify(err));
-                });
-        });
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.value = 'Enviar email';
+                alert('Enviado!');
+            }, (err) => {
+                btn.value = 'Enviar mail';
+                alert(JSON.stringify(err));
+            });
+    });
 </script>
 
 </html>
