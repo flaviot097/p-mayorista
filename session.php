@@ -67,7 +67,7 @@ if ($_GET) {
                 $_SESSION["usuario"] = $respuestaJson[0]["usuario"];
                 $dnivalido = $respuestaJson[0]["dni"];
                 setcookie('usuario', $dnivalido);
-                setcookie('Nombreusuario', $respuestaJson[0]["usuario"]);
+                setcookie('Nombreusuario', $respuestaJson[0]["usuario"], time() + 3600);
 
                 header("Location: estadisticas.php");
                 exit();
