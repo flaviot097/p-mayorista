@@ -4,7 +4,7 @@ ob_start();
 
 // Iniciar la sesión
 session_start();
-
+echo $_SESSION["usuario"];
 // Verificar si el usuario está en la sesión
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
