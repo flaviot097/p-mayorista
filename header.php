@@ -38,17 +38,17 @@ if (isset($_SESSION['usuario'])) {
                 </li>
             </ul>
             <div class="ml-auto my-2 my-lg-0"><?php if (isset($_SESSION["usuario"])) { ?>
-                    <a href="estadisticas.php"> <button class="btn btn-dark rounded-pill usuario-iniciado"
-                            id="usuario-logeado"><img class="usuario-iniciado" src="./assets/img/usuario-iniciado.png"
-                                alt="usuario"><?php echo $usuario; ?>
-                        </button></a>
-                    <a href="destruir-session.php"><button class="btn btn-dark rounded-pill">Cerrar Sesion</button></a><?php
+                <a href="estadisticas.php"> <button class="btn btn-dark rounded-pill usuario-iniciado"
+                        id="usuario-logeado"><img class="usuario-iniciado" src="./assets/img/usuario-iniciado.png"
+                            alt="usuario"><?php echo $usuario; ?>
+                    </button></a>
+                <a href="destruir-session.php"><button class="btn btn-dark rounded-pill">Cerrar Sesion</button></a><?php
             } else { ?>
 
 
-                    <button class="btn btn-dark rounded-pill" id="iniciar-session">Iniciar Sesion</button>
-                </div>
-                <?php
+                <button class="btn btn-dark rounded-pill" id="iniciar-session">Iniciar Sesion</button>
+            </div>
+            <?php
             }
             ; ?>
         </div>
