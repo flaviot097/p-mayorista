@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="./assets/css/estadisticas.css">
     <script type="module" src="../assets/js/estadisticas.js"></script>
 </head>
-<?php $cu = curl_init();
+<?php
+$cu = curl_init();
 $dni = $_COOKIE["usuario"];
 $url = "https://api-8cf6.onrender.com/ventas/" . $dni;
 curl_setopt($cu, CURLOPT_URL, $url);
@@ -36,8 +37,8 @@ if (curl_errno($cu)) {
 
     curl_close($cu);
 }
-;
-echo "<script>var datosJson=$respuesta;</script>";
+; ?>
+<?php echo "<script> var datosJson=$respuesta;</script>";
 ?>
 
 <body>

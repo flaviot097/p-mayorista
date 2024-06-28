@@ -58,7 +58,7 @@ if ($_GET) {
             setcookie('usuario', $dnivalido);
 
 
-            header("Location: estadisticas.php");
+            header("estadisticas.php");
         } else {
             echo '<div loading="lazy" class="no-coinciden" >Contraseña incorrecta</div>';
         }
