@@ -2,12 +2,9 @@
 // Iniciar el almacenamiento en búfer de salida
 ob_start();
 
-// Iniciar la sesión
-session_start();
-echo $_SESSION["usuario"];
-// Verificar si el usuario está en la sesión
-if (isset($_SESSION['usuario'])) {
-    $usuario = $_SESSION['usuario'];
+// Verificar si el usuario está en la cookie
+if (isset($_COOKIE['usuario'])) {
+    $usuario = $_COOKIE['usuario'];
 }
 ?>
 <!DOCTYPE html>
@@ -50,14 +47,14 @@ if (isset($_SESSION['usuario'])) {
                     </li>
                 </ul>
                 <div class="ml-auto my-2 my-lg-0">
-                    <?php if (isset($_SESSION["usuario"])) { ?>
+                    <?php if (isset($_COOKIE["usuario"])) { ?>
                     <a href="estadisticas.php">
                         <button class="btn btn-dark rounded-pill usuario-iniciado" id="usuario-logeado">
                             <img class="usuario-iniciado" src="./assets/img/usuario-iniciado.png" alt="usuario">
                             <?php echo htmlspecialchars($usuario); ?>
                         </button>
                     </a>
-                    <a href="destruir-session.php">
+                    <a href="destruir-cookie.php">
                         <button class="btn btn-dark rounded-pill">Cerrar Sesion</button>
                     </a>
                     <?php } else { ?>
