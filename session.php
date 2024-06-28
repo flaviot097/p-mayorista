@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sesion</title>
-    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-
-    <link rel="stylesheet" href="./assets/css/maicons.css">
-
-    <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
-
-    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="./assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="./assets/css/mobster.css">
-
-    <link rel="stylesheet" href="./assets/css/session.css">
-</head>
 <?php
 // Habilitar la visualización de errores
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Iniciar el buffer de salida
+// Iniciar el buffer de salida para evitar envíos de encabezados prematuros
 ob_start();
 
 // Configuración de encabezados CORS
@@ -102,6 +81,22 @@ if ($_GET) {
 ob_end_flush();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesion</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/maicons.css">
+    <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
+    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/mobster.css">
+    <link rel="stylesheet" href="./assets/css/session.css">
+</head>
+
 <body>
     <div class="backgaund-imagen" style="background-image: url(./assets/img/bg_hero_2.svg)">
     </div>
@@ -119,7 +114,6 @@ ob_end_flush();
             </div>
         </div>
     </div>
-
 </body>
 <?php require_once ("footer.php"); ?>
 <script src="./assets/js/mensajes.js"></script>
