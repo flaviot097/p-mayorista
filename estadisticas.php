@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="./assets/css/productos.css">
     <link rel="stylesheet" href="./assets/css/barra-lateral-usuario.css">
     <link rel="stylesheet" href="./assets/css/estadisticas.css">
-    <script type="module" src="../assets/js/estadisticas.js"></script>
 </head>
 <?php
 $cu = curl_init();
@@ -49,6 +48,7 @@ if (curl_errno($cu)) {
         <div class="contenedor-card-productos">
             <div class="col justify-content-center mt-5">
                 <!-- CARDS DE PRODUCTOS -->
+                <?php echo "<script> var datosJson=$respuesta;</script>"; ?>
 
                 <div class="ventas-recaudacion">
                     <p><strong>Recaudacion de ventas.</strong></p>
@@ -63,8 +63,6 @@ if (curl_errno($cu)) {
     </div>
 
 </body>
-<?php echo "<script> var datosJson=$respuesta;</script>";
-?>
 <?php require_once ("footer.php"); ?>
 <script src="./assets/js/barra-lateral.js"></script>
 <script type="module" src="../assets/js/estadisticas.js"></script>
