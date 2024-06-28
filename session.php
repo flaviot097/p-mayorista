@@ -20,13 +20,15 @@
     <link rel="stylesheet" href="./assets/css/session.css">
 </head>
 <?php
-error_reporting(0);
-
+// Habilitar la visualización de errores
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Iniciar el buffer de salida
+ob_start();
+
 // Configuración de encabezados CORS
-header("Access-Control-Allow-Origin: https://tu-dominio.render.com"); // Cambia a tu dominio
+header("Access-Control-Allow-Origin: https://p-mayorista.onrender.com"); // Cambia a tu dominio
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
@@ -77,7 +79,7 @@ if ($_GET) {
                 setcookie('test_cookie', 'test_value', [
                     'expires' => time() + 86400, // 1 día
                     'path' => '/',
-                    'domain' => 'https://p-mayorista.onrender.com', // Cambia a tu dominio
+                    'domain' => 'p-mayorista.onrender.com', // Cambia a tu dominio
                     'secure' => true, // true para HTTPS
                     'httponly' => true,
                     'samesite' => 'None'
@@ -96,6 +98,8 @@ if ($_GET) {
     }
 }
 
+// Finalizar el buffer de salida y enviar la salida al navegador
+ob_end_flush();
 ?>
 
 <body>
