@@ -38,8 +38,6 @@ if (curl_errno($cu)) {
     curl_close($cu);
 }
 ; ?>
-<?php echo "<script> var datosJson=$respuesta;</script>";
-?>
 
 <body>
     <div class="backgaund-imagen" style="background-image: url(./assets/img/bg_hero_2.svg)">
@@ -65,6 +63,8 @@ if (curl_errno($cu)) {
     </div>
 
 </body>
+<?php echo "<script> var datosJson=$respuesta;</script>";
+?>
 <?php require_once ("footer.php"); ?>
 <script src="./assets/js/barra-lateral.js"></script>
 <script type="module" src="../assets/js/estadisticas.js"></script>
