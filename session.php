@@ -1,6 +1,6 @@
 <?php
 // Habilitar la visualización de errores
-error_reporting(E_ALL);
+error_reporting(0);
 ini_set('display_errors', 1);
 
 // Iniciar el buffer de salida para evitar envíos de encabezados prematuros

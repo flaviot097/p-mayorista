@@ -1,6 +1,7 @@
 <?php
 // Iniciar el almacenamiento en búfer de salida
 ob_start();
+error_reporting(0);
 
 // Verificar si el usuario está en la cookie
 if (isset($_COOKIE['Nombreusuario'])) {
@@ -54,7 +55,7 @@ if (isset($_COOKIE['Nombreusuario'])) {
                             <?php echo $usuario; ?>
                         </button>
                     </a>
-                    <a href="destruir-cookie.php">
+                    <a href="destruir-session.php">
                         <button class="btn btn-dark rounded-pill">Cerrar Sesion</button>
                     </a>
                     <?php } else { ?>

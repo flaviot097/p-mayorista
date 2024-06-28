@@ -30,7 +30,8 @@ var cdiciembre = 0;
 
 //////////////////////
 console.log(JSON.parse(datosJson));
-datosJson.forEach((e) => {
+var datosE = JSON.parse(datosJson);
+datosE.forEach((e) => {
   subtotal = subtotal + e.total;
   cantidad = cantidad + 1;
   let fechaVentas = e.fecha.slice(5, 7);
