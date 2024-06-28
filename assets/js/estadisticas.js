@@ -30,6 +30,7 @@ var coctubre = 0;
 var cdiciembre = 0;
 
 //////////////////////
+console.log(datosJson);
 datosJson.forEach((e) => {
   subtotal = subtotal + e.total;
   cantidad = cantidad + 1;
