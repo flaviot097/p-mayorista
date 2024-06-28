@@ -51,7 +51,7 @@ if (isset($_COOKIE['Nombreusuario'])) {
                     <a href="estadisticas.php">
                         <button class="btn btn-dark rounded-pill usuario-iniciado" id="usuario-logeado">
                             <img class="usuario-iniciado" src="./assets/img/usuario-iniciado.png" alt="usuario">
-                            <?php echo htmlspecialchars($usuario); ?>
+                            <?php echo $usuario; ?>
                         </button>
                     </a>
                     <a href="destruir-cookie.php">
