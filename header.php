@@ -1,4 +1,7 @@
 <?php
+// Iniciar el almacenamiento en búfer de salida
+ob_start();
+
 // Iniciar la sesión
 session_start();
 
