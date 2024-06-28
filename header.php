@@ -3,7 +3,7 @@
 ob_start();
 
 // Verificar si el usuario está en la cookie
-if (isset($_COOKIE['usuario'])) {
+if (isset($_COOKIE['Nombreusuario'])) {
     $usuario = $_COOKIE['Nombreusuario'];
 }
 ?>
