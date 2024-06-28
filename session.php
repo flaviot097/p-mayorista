@@ -22,64 +22,57 @@
 <?php
 error_reporting(0);
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Configuración de encabezados CORS
+header("Access-Control-Allow-Origin: https://tu-dominio.render.com"); // Cambia a tu dominio
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Manejar preflight requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    }
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
+        header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    }
+    exit(0);
+}
+
+// Iniciar la sesión con opciones seguras
+session_start([
+    'cookie_secure' => true, // true para HTTPS
+    'cookie_httponly' => true,
+    'cookie_samesite' => 'None'
+]);
+
+// Manejar la lógica de validación y cookies
 if ($_GET) {
-    if ($_GET['usuario'] !== null || $_GET['usuario'] !== "" && $_GET['password'] !== null || $_GET['password'] !== "") {
+    if (!empty($_GET['usuario']) && !empty($_GET['password'])) {
         $dni = $_GET['usuario'];
         $pass = $_GET['password'];
 
         $ci = curl_init();
-
         $url = "https://api-8cf6.onrender.com/validacion/dni/" . $dni;
-
         curl_setopt($ci, CURLOPT_URL, $url);
-
         curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
-
         $respuesta = curl_exec($ci);
 
         if (curl_errno($ci)) {
             $mensaje_error = curl_error($ci);
-
+            echo "Error en la solicitud: " . $mensaje_error;
         } else {
-
             curl_close($ci);
         }
-        ;
-        ;
+
         $respuestaJson = json_decode($respuesta, true);
         if (!$respuestaJson) {
             echo '<div loading="lazy" class="no-coinciden">El DNI ingresado es incorrecto o no existe</div>';
         } else {
             if ($respuestaJson[0]["contrasenia"] === $pass) {
-
-                // Habilitar la visualización de errores
-                error_reporting(E_ALL);
-                ini_set('display_errors', 1);
-
-                // Configuración de encabezados CORS
-                header("Access-Control-Allow-Origin: https://tu-dominio.render.com"); // Cambia a tu dominio
-                header("Access-Control-Allow-Credentials: true");
-                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-                header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
-                // Manejar preflight requests
-                if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-                    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
-                        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-                    }
-                    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
-                        header("Access-Control-Allow-Headers: Content-Type, Authorization");
-                    }
-                    exit(0);
-                }
-
-                // Iniciar la sesión con opciones seguras
-                session_start([
-                    'cookie_secure' => true, // true para HTTPS
-                    'cookie_httponly' => true,
-                    'cookie_samesite' => 'None'
-                ]);
-
                 // Configurar una cookie segura
                 setcookie('test_cookie', 'test_value', [
                     'expires' => time() + 86400, // 1 día
@@ -91,27 +84,17 @@ if ($_GET) {
                 ]);
 
                 $_SESSION["usuario"] = $respuestaJson[0]["usuario"];
-
-
-                ///uso de cookies para guardar el usuario
                 $dnivalido = $respuestaJson[0]["dni"];
                 setcookie('usuario', $dnivalido);
 
-
                 header("Location: estadisticas.php");
+                exit();
             } else {
                 echo '<div loading="lazy" class="no-coinciden">Contraseña incorrecta</div>';
             }
         }
-        ;
-
-
     }
-    ;
 }
-;
-
-
 
 ?>
 
