@@ -58,7 +58,7 @@ if ($_GET) {
             setcookie('usuario', $dnivalido);
 
 
-            header("Location: https://p-mayorista.onrender.com/estadisticas.php");
+            header("Location: estadisticas.php");
         } else {
             echo '<div loading="lazy" class="no-coinciden" >Contraseña incorrecta</div>';
         }

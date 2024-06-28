@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="./assets/css/estadisticas.css">
 </head>
 <?php
-session_start();
 $cu = curl_init();
 $dni = $_COOKIE["usuario"];
 $url = "https://api-8cf6.onrender.com/ventas/" . $dni;
