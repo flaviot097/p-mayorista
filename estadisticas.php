@@ -24,7 +24,7 @@
 <?php
 $cu = curl_init();
 $dni = $_COOKIE["usuario"];
-echo $dni;
+
 $url = "https://api-8cf6.onrender.com/ventas/" . $dni;
 curl_setopt($cu, CURLOPT_URL, $url);
 curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
