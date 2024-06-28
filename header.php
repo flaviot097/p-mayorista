@@ -4,7 +4,7 @@ ob_start();
 
 // Verificar si el usuario está en la cookie
 if (isset($_COOKIE['usuario'])) {
-    $usuario = $_COOKIE['usuario'];
+    $usuario = $_COOKIE['Nombreusuario'];
 }
 ?>
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ if (isset($_COOKIE['usuario'])) {
                     </li>
                 </ul>
                 <div class="ml-auto my-2 my-lg-0">
-                    <?php if (isset($_COOKIE["usuario"])) { ?>
+                    <?php if (isset($_COOKIE["Nombreusuario"])) { ?>
                     <a href="estadisticas.php">
                         <button class="btn btn-dark rounded-pill usuario-iniciado" id="usuario-logeado">
                             <img class="usuario-iniciado" src="./assets/img/usuario-iniciado.png" alt="usuario">
