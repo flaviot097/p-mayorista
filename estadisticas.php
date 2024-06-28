@@ -27,7 +27,7 @@ $dni = $_COOKIE["usuario"];
 $url = "https://api-8cf6.onrender.com/ventas/" . $dni;
 curl_setopt($cu, CURLOPT_URL, $url);
 curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
-$respuesta = curl_exec($cu);
+$respuesta = json_encode(curl_exec($cu));
 
 if (curl_errno($cu)) {
     $mensaje_error = curl_error($ci);
