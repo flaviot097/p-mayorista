@@ -84,7 +84,7 @@ if ($_GET) {
     <div class="conteiner-cuerpo">
         <div class="iniciar-session">
             <div class="container-formulario-iniciar-sesion">
-                <form action="estadisticas.php" method="get" class="formulario-iniciar-sesion">
+                <form method="get" class="formulario-iniciar-sesion">
                     <label for="" class="usuario-label-iniciar-session">DNI</label>
                     <input class="usuario-iniciar-session" name="usuario"></input>
                     <label for="" class="contrasenia-label-iniciar-session">Contraseña</label>
