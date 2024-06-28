@@ -21,7 +21,7 @@
 </head>
 <?php
 error_reporting(0);
-session_start();
+
 if ($_GET) {
     if ($_GET['usuario'] !== null || $_GET['usuario'] !== "" && $_GET['password'] !== null || $_GET['password'] !== "") {
         $dni = $_GET['usuario'];
