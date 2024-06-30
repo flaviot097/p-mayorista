@@ -28,6 +28,7 @@ function agregarProductoACarrito(imputvalue) {
 
 function renderCards(productos) {
   productos.forEach((jsonDatos) => {
+    console.log(jsonDatos.imagen.data);
     const imagenBase64 = bufferToBase64(jsonDatos.imagen[0].data);
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
