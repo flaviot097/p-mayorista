@@ -27,34 +27,44 @@ function agregarProductoACarrito(imputvalue) {
 }
 
 function renderCards(productos) {
+  const divCard = document.querySelector(".col-lg.contenedor-cartas");
+  // Limpiar contenido existente antes de añadir nuevas tarjetas
+  divCard.innerHTML = "";
+
+  let html = ""; // Acumulador para el contenido HTML
+
   productos.forEach((jsonDatos) => {
     const imagenBase64 = arrayBufferToBase64(jsonDatos.imagen.data);
     const containerCards = `
-            <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
-                <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
-                    <form method="post" class="form-action-redirection" action="https://p-mayorista.onrender.com/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
-                        <input class="input-disabled" type="text" name="code">
-                        <div class="svg-icon mx-auto mb-4">
-                            <img loading="lazy" src="${imagenBase64}" alt="" class="img-productos" id="${jsonDatos.codigo}">
-                        </div>
-                        <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
-                        <p id="${jsonDatos.codigo}" class="id-producto">codigo de producto:${jsonDatos.codigo}</p>
-                        <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}.</p>
-                        <p id="${jsonDatos.codigo}" class="proveedor"> Proveedor: ${jsonDatos.distribuidora}.</p>
-                        <h6 id="${jsonDatos.codigo}" class="precio-producto">Precio: $${jsonDatos.precio} c/u</h6>
-                    </form>
-                    <button id=${jsonDatos.codigo} class="btn-agregar-carrito">
-                        <img width="32" height="30" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-trolley--v2.png" alt="shopping-trolley--v2" />
-                    </button>
-                </div>
-            </div>`;
-    const divCard = document.querySelector(".col-lg.contenedor-cartas");
-    divCard.innerHTML += containerCards;
+      <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
+        <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
+          <form method="post" class="form-action-redirection" action="https://p-mayorista.onrender.com/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
+            <input class="input-disabled" type="text" name="code">
+            <div class="svg-icon mx-auto mb-4">
+              <img loading="lazy" src="${imagenBase64}" alt="" class="img-productos" id="${jsonDatos.codigo}">
+            </div>
+            <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
+            <p id="${jsonDatos.codigo}" class="id-producto">Código de producto: ${jsonDatos.codigo}</p>
+            <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}.</p>
+            <p id="${jsonDatos.codigo}" class="proveedor">Proveedor: ${jsonDatos.distribuidora}.</p>
+            <h6 id="${jsonDatos.codigo}" class="precio-producto">Precio: $${jsonDatos.precio} c/u</h6>
+          </form>
+          <button id="${jsonDatos.codigo}" class="btn-agregar-carrito">
+            <img width="32" height="30" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-trolley--v2.png" alt="shopping-trolley--v2" />
+          </button>
+        </div>
+      </div>`;
+    html += containerCards; // Agregar el contenedor al HTML acumulado
   });
+
+  // Establecer todo el HTML de una vez en el contenedor
+  divCard.innerHTML = html;
 
   // Añadir eventos después de crear las tarjetas
   addEventListeners();
 }
+
+// Función para convertir ArrayBuffer a base64
 function arrayBufferToBase64(buffer) {
   const binary = new Uint8Array(buffer);
   const base64String = btoa(String.fromCharCode(...binary));
@@ -80,7 +90,7 @@ function addEventListeners() {
   redirec.forEach((element) => {
     element.addEventListener("click", (e) => {
       const imputvalue = e.target.id;
-      document.cookie = "code=" + imputvalue + ";max-age=3600;";
+      document.cookie = `code=${imputvalue};max-age=3600;`;
       document.location = "https://p-mayorista.onrender.com/producto.php";
     });
   });
