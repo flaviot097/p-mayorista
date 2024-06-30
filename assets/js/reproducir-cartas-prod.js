@@ -28,8 +28,14 @@ function agregarProductoACarrito(imputvalue) {
 
 function renderCards(productos) {
   productos.forEach((jsonDatos) => {
+    var imagenBase64;
+    if (jsonDatos.imagen && jsonDatos.imagen.data) {
+      imagenBase64 = bufferToBase64(jsonDatos.imagen.data);
+    } else {
+      imagenBase64 = "sadsad";
+    }
     console.log(jsonDatos.imagen.data);
-    const imagenBase64 = bufferToBase64(jsonDatos.imagen.data);
+
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                 <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
