@@ -32,7 +32,7 @@ async function renderCards(productos) {
 
     if (jsonDatos.imagen && jsonDatos.imagen.data) {
       console.log("Datos de imagen BLOB recibidos:", jsonDatos.imagen.data);
-      imagenBase64 = await bufferToBase64(jsonDatos.imagen.data);
+      imagenBase64 = jsonDatos.imagen.data;
       console.log("Imagen convertida a Base64:", imagenBase64);
     }
 
