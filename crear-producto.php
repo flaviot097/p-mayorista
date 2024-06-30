@@ -61,6 +61,22 @@
 if ($_POST) {
     if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"])) {
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_FILES['img'])) {
+                $target_dir = "uploads/";
+                $target_file = $target_dir . basename($_FILES["img"]["name"]);
+
+                if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
+                    echo json_encode(["filename" => basename($_FILES["imagen"]["name"])]);
+                } else {
+                    http_response_code(500);
+                    echo json_encode(["error" => "Error subiendo la imagen"]);
+                }
+            } else {
+                http_response_code(400);
+                echo json_encode(["error" => "No se ha enviado ninguna imagen"]);
+            }
+        }
         // Recoge los datos del formulario
         $producto = $_POST['producto'];
         $codigo = $_POST['codigo'];
