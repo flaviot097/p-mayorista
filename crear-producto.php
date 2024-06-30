@@ -46,6 +46,8 @@
                 <input type="text" class="stock" id="" name="stock"><br>
                 <label for="" class="descripcion">Descripcion</label><br>
                 <textarea name="descripcion" id="descripcion" cols="23" rows="8"></textarea><br>
+                <label for="" class="stock">Distribuidora</label><br>
+                <input type="text" class="stock" id="" name="distribuidora"><br>
 
                 <button type="" class="btn-actualizar">Crear</button>
             </form>
@@ -58,69 +60,46 @@
 <script src="./assets/js/mensajes.js"></script>
 <script src="./assets/js/plantilla-alerta-exitosa.js"></script>
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $producto = $_POST['producto'];
+    $codigo = $_POST['codigo'];
+    $precio = $_POST['precio'];
+    $stock = $_POST['stock'];
+    $distribuidora = $_POST['distribuidora'];
+    $descripcion = $_POST['descripcion'];
+    $fecha = date("Y-m-d");
+    $dni = $_POST['dni'];
+    $imagen = $_FILES['img']['tmp_name'];
+    $imagenData = file_get_contents($imagen);
 
-        // Recoge los datos del formulario
-        $producto = $_POST['producto'];
-        $codigo = $_POST['codigo'];
-        $precio = $_POST['precio'];
-        $stock = $_POST['stock'];
-        $descripcion = $_POST['descripcion'];
-        $dni = $_POST['dni'];
+    // Configuración de cURL
+    $url = 'https://api-8cf6.onrender.com/inicio/crearProducto';
+    $data = array(
+        'producto' => $producto,
+        'codigo' => $codigo,
+        'precio' => $precio,
+        'stock' => $stock,
+        'distribuidora' => $distribuidora,
+        'descripcion' => $descripcion,
+        'fecha' => $fecha,
+        'dni' => $dni,
+        'imagen' => base64_encode($imagenData) // Convertir la imagen a base64 para enviarla
+    );
 
-        // Ruta donde se guardará la imagen
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['img'])) {
-            $target_dir = "./uploads/";
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
-            // Obtener la extensión del archivo
-            $imageFileType = strtolower(pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION));
+    $response = curl_exec($ch);
+    curl_close($ch);
 
-            // Generar un nombre único basado en la fecha y hora actual
-            $timestamp = date("YmdHis");
-            $target_file = $target_dir . $timestamp . "_upload." . $imageFileType;
-
-            // Mover el archivo subido al directorio uploads
-            if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-                echo "El archivo " . htmlspecialchars(basename($_FILES["img"]["name"])) . " ha sido subido correctamente como " . htmlspecialchars(basename($target_file)) . ".";
-            } else {
-                echo "Hubo un error al subir el archivo.";
-            }
-        }
-
-        // Inicializa cURL
-        $url = "https://api-8cf6.onrender.com/inicio/crearProducto";
-        $curl = curl_init($url);
-
-        // Datos a enviar a la API
-        $data = [
-            'producto' => $producto,
-            'codigo' => $codigo,
-            'precio' => $precio,
-            'stock' => $stock,
-            'distribuidora' => "h",
-            'descripcion' => $descripcion,
-            'fecha' => date("Y-m-d"),
-            'dni' => $dni,
-            'imagen' => $imageName // Solo enviar el nombre de la imagen
-        ];
-
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-        $resultado = curl_exec($curl);
-        if (curl_errno($curl)) {
-            echo 'Error:' . curl_error($curl);
-        } else {
-            echo "<script>mensajeProductosExito();</script>";
-        }
-
-        curl_close($curl);
-
+    // Manejar la respuesta de la API
+    if ($response === false) {
+        echo 'Error al subir el producto';
     } else {
-        http_response_code(400);
-        echo json_encode(["error" => "Faltan datos en el formulario"]);
+        echo 'Producto subido exitosamente';
     }
 }
 ;
