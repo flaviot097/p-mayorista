@@ -60,12 +60,13 @@
 <script src="./assets/js/mensajes.js"></script>
 <script src="./assets/js/plantilla-alerta-exitosa.js"></script>
 <?php
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $producto = $_POST['producto'];
     $codigo = $_POST['codigo'];
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
-    $distribuidora = $_POST['distribuidora'];
+    $distribuidora = $_POST['distribuidora'];  // Si es necesario
     $descripcion = $_POST['descripcion'];
     $fecha = date("Y-m-d");
     $dni = $_POST['dni'];
@@ -102,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'Producto subido exitosamente';
     }
 }
+
 ;
 
 
