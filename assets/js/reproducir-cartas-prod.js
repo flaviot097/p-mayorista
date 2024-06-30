@@ -26,18 +26,14 @@ function agregarProductoACarrito(imputvalue) {
   document.cookie = `carrito=${arreglo.join(",")};max-age=3600;`;
 }
 
-function renderCards(productos) {
-  productos.forEach((jsonDatos) => {
-    var imagenBase64;
+async function renderCards(productos) {
+  for (const jsonDatos of productos) {
+    let imagenBase64 = "ruta/a/imagen_predeterminada.png"; // Ruta a una imagen predeterminada
+
     if (jsonDatos.imagen && jsonDatos.imagen.data) {
-      console.log(jsonDatos.imagen.data);
-      imagenBase64 = bufferToBase64(
-        jsonDatos.imagen.data,
-        jsonDatos.imagen.tipo
-      );
-    } else {
-      imagenBase64 = "sadsad"; // Puedes reemplazar esto con una imagen predeterminada
+      imagenBase64 = await bufferToBase64(jsonDatos.imagen.data);
     }
+
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                 <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
@@ -59,28 +55,40 @@ function renderCards(productos) {
             </div>`;
     const divCard = document.querySelector(".col-lg.contenedor-cartas");
     divCard.innerHTML += containerCards;
-  });
+  }
 
   // Añadir eventos después de crear las tarjetas
   addEventListeners();
 }
-function bufferToBase64(buffer, type = "image/jpeg") {
-  let binary = "";
-  const bytes = new Uint8Array(buffer);
-  const len = bytes.byteLength;
-  for (let i = 0; i < len; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return `data:${type};base64,${btoa(binary)}`;
+
+function bufferToBase64(buffer) {
+  return new Promise((resolve, reject) => {
+    const blob = new Blob([buffer], { type: "image/jpeg" }); // Cambia 'image/jpeg' al tipo MIME correcto si es necesario
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
 }
-function reproducirCard() {
+
+async function reproducirCard() {
   const nuevosProductos = dataFilter.slice(contador, contador + 8);
+  for (const producto of nuevosProductos) {
+    if (producto.imagen && producto.imagen.data) {
+      producto.imagen.data = await bufferToBase64(producto.imagen.data);
+    }
+  }
   renderCards(nuevosProductos);
   contador += 8; // Actualizar el contador
 }
 
-function cardsonload() {
+async function cardsonload() {
   const productosIniciales = dataFilter.slice(contador, contador + 8);
+  for (const producto of productosIniciales) {
+    if (producto.imagen && producto.imagen.data) {
+      producto.imagen.data = await bufferToBase64(producto.imagen.data);
+    }
+  }
   renderCards(productosIniciales);
   contador += 8; // Actualizar el contador
 }
