@@ -74,7 +74,7 @@ if ($_POST) {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_FILES['img'])) {
-                $target_dir = "uploads/";
+                $target_dir = "./uploads/";
                 // Añadir fecha y hora al nombre de la imagen para evitar conflictos
                 $timestamp = time();
                 $imageFileType = strtolower(pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION));
