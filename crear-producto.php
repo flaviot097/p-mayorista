@@ -58,16 +58,59 @@
 <script src="./assets/js/mensajes.js"></script>
 <script src="./assets/js/plantilla-alerta-exitosa.js"></script>
 <?php
+
+
+
 if ($_POST) {
     if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"])) {
+
+        // Recoge los datos del formulario
+        $producto = $_POST['producto'];
+        $codigo = $_POST['codigo'];
+        $precio = $_POST['precio'];
+        $stock = $_POST['stock'];
+        $descripcion = $_POST['descripcion'];
+        $dni = $_POST['dni'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_FILES['img'])) {
                 $target_dir = "uploads/";
-                $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                // Añadir fecha y hora al nombre de la imagen para evitar conflictos
+                $timestamp = time();
+                $imageFileType = strtolower(pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION));
+                $target_file = $target_dir . basename($_FILES["img"]["name"], ".$imageFileType") . "_$timestamp.$imageFileType";
 
-                if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
-                    echo json_encode(["filename" => basename($_FILES["imagen"]["name"])]);
+                if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                    // Nombre de la imagen con fecha y hora
+                    $imageName = basename($target_file);
+
+                    // Inicializa cURL
+                    $url = "https://api-8cf6.onrender.com/inicio/crearProducto";
+                    $curl = curl_init($url);
+
+                    $data = [
+                        'producto' => $producto,
+                        'codigo' => $codigo,
+                        'precio' => $precio,
+                        'stock' => $stock,
+                        'distribuidora' => "h",
+                        'descripcion' => $descripcion,
+                        'dni' => $dni,
+                        'imagen' => $imageName // Solo enviar el nombre de la imagen
+                    ];
+
+                    curl_setopt($curl, CURLOPT_POST, true);
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+                    $resultado = curl_exec($curl);
+                    if (curl_errno($curl)) {
+                        echo 'Error:' . curl_error($curl);
+                    } else {
+                        echo "<script>mensajeProductosExito();</script>";
+                    }
+
+                    curl_close($curl);
                 } else {
                     http_response_code(500);
                     echo json_encode(["error" => "Error subiendo la imagen"]);
@@ -77,6 +120,14 @@ if ($_POST) {
                 echo json_encode(["error" => "No se ha enviado ninguna imagen"]);
             }
         }
+    }
+}
+
+/*
+if ($_POST) {
+    if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"])) {
+
+
         // Recoge los datos del formulario
         $producto = $_POST['producto'];
         $codigo = $_POST['codigo'];
@@ -118,7 +169,7 @@ if ($_POST) {
 
         curl_close($curl);
     }
-}
+}*/
 ?>
 
 <?php require_once ("footer.php"); ?>
