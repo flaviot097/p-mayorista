@@ -1,12 +1,3 @@
-DirectoryIndex index.php index.html
+DirectoryIndex index.php index.html Options -Indexes
 
-Options -Indexes
-
-<FilesMatch \.php$>
-    SetHandler application/x-httpd-php
-</FilesMatch>
-
-
-<Directory /var/www/html/uploads>
-    Require local
-</Directory>
+<FilesMatch \.php$> SetHandler application/x-httpd-php </FilesMatch>

@@ -70,49 +70,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dni = $_POST['dni'];
 
         // Ruta donde se guardará la imagen
-        $target_dir = "./uploads/";
-        // Añadir fecha y hora al nombre de la imagen para evitar conflictos
-        $timestamp = time();
-        $imageFileType = strtolower(pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION));
-        $target_file = $target_dir . basename($_FILES["img"]["name"], ".$imageFileType") . "_$timestamp.$imageFileType";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['img'])) {
+            $target_dir = "./uploads/";
 
-        if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-            // Nombre de la imagen con fecha y hora
-            $imageName = basename($target_file);
+            // Obtener la extensión del archivo
+            $imageFileType = strtolower(pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION));
 
-            // Inicializa cURL
-            $url = "https://api-8cf6.onrender.com/inicio/crearProducto";
-            $curl = curl_init($url);
+            // Generar un nombre único basado en la fecha y hora actual
+            $timestamp = date("YmdHis");
+            $target_file = $target_dir . $timestamp . "_upload." . $imageFileType;
 
-            // Datos a enviar a la API
-            $data = [
-                'producto' => $producto,
-                'codigo' => $codigo,
-                'precio' => $precio,
-                'stock' => $stock,
-                'distribuidora' => "h",
-                'descripcion' => $descripcion,
-                'fecha' => date("Y-m-d"),
-                'dni' => $dni,
-                'imagen' => $imageName // Solo enviar el nombre de la imagen
-            ];
-
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-            $resultado = curl_exec($curl);
-            if (curl_errno($curl)) {
-                echo 'Error:' . curl_error($curl);
+            // Mover el archivo subido al directorio uploads
+            if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                echo "El archivo " . htmlspecialchars(basename($_FILES["img"]["name"])) . " ha sido subido correctamente como " . htmlspecialchars(basename($target_file)) . ".";
             } else {
-                echo "<script>mensajeProductosExito();</script>";
+                echo "Hubo un error al subir el archivo.";
             }
-
-            curl_close($curl);
-        } else {
-            http_response_code(500);
-            echo json_encode(["error" => "Error subiendo la imagen"]);
         }
+
+        // Inicializa cURL
+        $url = "https://api-8cf6.onrender.com/inicio/crearProducto";
+        $curl = curl_init($url);
+
+        // Datos a enviar a la API
+        $data = [
+            'producto' => $producto,
+            'codigo' => $codigo,
+            'precio' => $precio,
+            'stock' => $stock,
+            'distribuidora' => "h",
+            'descripcion' => $descripcion,
+            'fecha' => date("Y-m-d"),
+            'dni' => $dni,
+            'imagen' => $imageName // Solo enviar el nombre de la imagen
+        ];
+
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        $resultado = curl_exec($curl);
+        if (curl_errno($curl)) {
+            echo 'Error:' . curl_error($curl);
+        } else {
+            echo "<script>mensajeProductosExito();</script>";
+        }
+
+        curl_close($curl);
+
     } else {
         http_response_code(400);
         echo json_encode(["error" => "Faltan datos en el formulario"]);
