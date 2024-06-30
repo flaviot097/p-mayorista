@@ -29,7 +29,7 @@ function agregarProductoACarrito(imputvalue) {
 function renderCards(productos) {
   productos.forEach((jsonDatos) => {
     console.log(jsonDatos.imagen);
-    const imagenBase64 = `data:image/jpeg;base64,${jsonDatos.imagen}`;
+    const imagenBase64 = bufferToBase64(jsonDatos.imagen);
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                 <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
@@ -55,6 +55,10 @@ function renderCards(productos) {
 
   // Añadir eventos después de crear las tarjetas
   addEventListeners();
+}
+function bufferToBase64(buffer) {
+  const binary = Buffer.from(buffer.data).toString("base64");
+  return `data:image/jpeg;base64,${binary}`;
 }
 
 function reproducirCard() {
