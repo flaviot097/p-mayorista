@@ -68,7 +68,7 @@ function bufferToBase64(buffer) {
   for (let i = 0; i < len; i++) {
     binary += String.fromCharCode(bytes[i]);
   }
-  return `data:image/jpeg;base64,${btoa(binary)}`;
+  return `data:image/PNG;base64,${btoa(binary)}`;
 }
 function reproducirCard() {
   const nuevosProductos = dataFilter.slice(contador, contador + 8);
