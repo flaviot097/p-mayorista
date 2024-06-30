@@ -28,14 +28,13 @@ function agregarProductoACarrito(imputvalue) {
 
 function renderCards(productos) {
   productos.forEach((jsonDatos) => {
-    const imagePath = `https://p-mayorista.onrender.com/uploads/${jsonDatos.imagen}`;
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                 <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
                     <form method="post" class="form-action-redirection" action="https://p-mayorista.onrender.com/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
                         <input class="input-disabled" type="text" name="code">
                         <div class="svg-icon mx-auto mb-4">
-                            <img loading="lazy" src="${imagePath}" alt="" class="img-productos" id="${jsonDatos.codigo}">
+                            <img loading="lazy" src="${jsonDatos.imagen}" alt="" class="img-productos" id="${jsonDatos.codigo}">
                         </div>
                         <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
                         <p id="${jsonDatos.codigo}" class="id-producto">codigo de producto:${jsonDatos.codigo}</p>
