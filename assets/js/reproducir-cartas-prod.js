@@ -64,11 +64,15 @@ function renderCards(productos) {
   addEventListeners();
 }
 
-// Función para convertir ArrayBuffer a base64
+// Función para convertir ArrayBuffer a base64 de manera eficiente
 function arrayBufferToBase64(buffer) {
-  const binary = new Uint8Array(buffer);
-  const base64String = btoa(String.fromCharCode(...binary));
-  return `data:image/jpeg;base64,${base64String}`;
+  let binary = "";
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return `data:image/jpeg;base64,${window.btoa(binary)}`;
 }
 
 function reproducirCard() {
