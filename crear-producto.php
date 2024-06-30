@@ -8,24 +8,17 @@
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="./assets/css/maicons.css">
-
     <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
-
     <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
-
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
-
     <link rel="stylesheet" href="./assets/css/mobster.css">
-
     <link rel="stylesheet" href="./assets/css/productos.css">
     <link rel="stylesheet" href="./assets/css/barra-lateral-usuario.css">
     <link rel="stylesheet" href="./assets/css/crear-producto.css">
 </head>
 
-
 <body>
-    <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)">
-    </div>
+    <div class="backgaund-imagen" style="background-image: url(../assets/img/bg_hero_2.svg)"></div>
     <?php require_once ("header.php"); ?>
     <div class="conteiner-cuerpo">
         <?php require_once ("barra-lateral-usuario.php"); ?>
@@ -46,20 +39,17 @@
                 <input type="text" class="stock" id="" name="stock"><br>
                 <label for="" class="descripcion">Descripcion</label><br>
                 <textarea name="descripcion" id="descripcion" cols="23" rows="8"></textarea><br>
-
-                <button type="" class="btn-actualizar">Crear</button>
+                <button type="submit" class="btn-actualizar">Crear</button>
             </form>
         </div>
     </div>
-
-
 </body>
 <script src="./assets/js/barra-lateral.js"></script>
 <script src="./assets/js/mensajes.js"></script>
 <script src="./assets/js/plantilla-alerta-exitosa.js"></script>
 <?php
-if ($_POST) {
-    if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"]["tmp_name"])) {
 
         // Recoge los datos del formulario
         $producto = $_POST['producto'];
@@ -74,32 +64,38 @@ if ($_POST) {
         $url = "https://api-8cf6.onrender.com/inicio/crearProducto";
         $curl = curl_init($url);
 
-
         $data = [
             'producto' => $producto,
             'codigo' => $codigo,
             'precio' => $precio,
             'stock' => $stock,
+            'distribuidora' => "h",
             'descripcion' => $descripcion,
             'dni' => $dni,
             'imagen' => new CURLFile($imagen, $_FILES['img']['type'], $_FILES['img']['name'])
         ];
 
-
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-
         $resultado = curl_exec($curl);
+
         if (curl_errno($curl)) {
             echo 'Error:' . curl_error($curl);
         } else {
-            echo "<script>mensajeProductosExito();</script>";
+            $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            if ($http_code == 200) {
+                echo "<script>mensajeProductosExito();</script>";
+            } else {
+                echo "Error en la solicitud. Código de estado HTTP: " . $http_code;
+                echo "<pre>" . htmlspecialchars($resultado) . "</pre>";
+            }
         }
 
-
         curl_close($curl);
+    } else {
+        echo "Faltan datos del formulario o archivo de imagen.";
     }
 }
 ?>
