@@ -57,10 +57,14 @@ function renderCards(productos) {
   addEventListeners();
 }
 function bufferToBase64(buffer) {
-  const binary = Buffer.from(buffer.data).toString("base64");
-  return `data:image/jpeg;base64,${binary}`;
+  let binary = "";
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return `data:image/jpeg;base64,${btoa(binary)}`;
 }
-
 function reproducirCard() {
   const nuevosProductos = dataFilter.slice(contador, contador + 8);
   renderCards(nuevosProductos);
