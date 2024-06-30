@@ -31,7 +31,10 @@ function renderCards(productos) {
     var imagenBase64;
     if (jsonDatos.imagen && jsonDatos.imagen.data) {
       console.log(jsonDatos.imagen.data);
-      imagenBase64 = bufferToBase64(jsonDatos.imagen.data);
+      imagenBase64 = bufferToBase64(
+        jsonDatos.imagen.data,
+        jsonDatos.imagen.tipo
+      );
     } else {
       imagenBase64 = "sadsad"; // Puedes reemplazar esto con una imagen predeterminada
     }
@@ -61,14 +64,14 @@ function renderCards(productos) {
   // Añadir eventos después de crear las tarjetas
   addEventListeners();
 }
-function bufferToBase64(buffer) {
+function bufferToBase64(buffer, type = "image/jpeg") {
   let binary = "";
   const bytes = new Uint8Array(buffer);
   const len = bytes.byteLength;
   for (let i = 0; i < len; i++) {
     binary += String.fromCharCode(bytes[i]);
   }
-  return `data:image/PNG;base64,${btoa(binary)}`;
+  return `data:${type};base64,${btoa(binary)}`;
 }
 function reproducirCard() {
   const nuevosProductos = dataFilter.slice(contador, contador + 8);
