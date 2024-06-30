@@ -31,7 +31,9 @@ async function renderCards(productos) {
     let imagenBase64 = "ruta/a/imagen_predeterminada.png"; // Ruta a una imagen predeterminada
 
     if (jsonDatos.imagen && jsonDatos.imagen.data) {
+      console.log("Datos de imagen BLOB recibidos:", jsonDatos.imagen.data);
       imagenBase64 = await bufferToBase64(jsonDatos.imagen.data);
+      console.log("Imagen convertida a Base64:", imagenBase64);
     }
 
     const containerCards = `
