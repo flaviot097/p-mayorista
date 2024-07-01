@@ -25,7 +25,6 @@ function agregarProductoACarrito(imputvalue) {
   // Actualizar la cookie
   document.cookie = `carrito=${arreglo.join(",")};max-age=3600;`;
 }
-
 function renderCards(productos) {
   productos.forEach((jsonDatos) => {
     var imagenBase64;
@@ -60,11 +59,17 @@ function renderCards(productos) {
   // Añadir eventos después de crear las tarjetas
   addEventListeners();
 }
+
 function bufferToBase64(buffer) {
   // Convertir los datos de buffer a una cadena base64 válida
-  const base64String = Buffer.from(buffer).toString("base64");
-  return `data:image/jpeg;base64,${base64String}`;
+  const bytes = new Uint8Array(buffer);
+  let binary = "";
+  for (let i = 0; i < bytes.byteLength; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return `data:image/jpeg;base64,${btoa(binary)}`;
 }
+
 function reproducirCard() {
   const nuevosProductos = dataFilter.slice(contador, contador + 8);
   renderCards(nuevosProductos);
