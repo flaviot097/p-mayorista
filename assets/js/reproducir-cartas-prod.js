@@ -28,7 +28,17 @@ function agregarProductoACarrito(imputvalue) {
 
 async function renderCards(productos) {
   for (const jsonDatos of productos) {
-    const imagenBase64 = jsonDatos.imagen.data;
+    let imagenBase64 = "../../uploads/1718691069537.jpg"; // Ruta a una imagen predeterminada
+
+    if (jsonDatos.imagen && jsonDatos.imagen.data) {
+      // Convertir los datos de imagen a Base64
+      imagenBase64 = await bufferToBase64(jsonDatos.imagen.data);
+    } else {
+      // Manejo si no hay imagen disponible
+      console.error(
+        `No hay datos de imagen para el producto ${jsonDatos.codigo}`
+      );
+    }
 
     const containerCards = `
       <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
@@ -57,10 +67,11 @@ async function renderCards(productos) {
   addEventListeners();
 }
 
-function bufferToBase64(buffer) {
+async function bufferToBase64(buffer) {
   return new Promise((resolve, reject) => {
-    // No es necesario convertir a Blob si los datos ya son base64
-    resolve(buffer);
+    // Convertir los datos de buffer a cadena Base64
+    const base64Image = Buffer.from(buffer).toString("base64");
+    resolve(`data:image/jpeg;base64,${base64Image}`);
   });
 }
 
