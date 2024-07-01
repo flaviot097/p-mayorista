@@ -31,7 +31,9 @@ async function renderCards(productos) {
     let imagenBase64 = "../../uploads/1718691069537.jpg"; // Ruta a una imagen predeterminada
 
     if (jsonDatos.imagen && jsonDatos.imagen.data) {
-      imagenBase64 = await bufferToBase64(jsonDatos.imagen.data);
+      imagenBase64 = await bufferToBase64(
+        jsonDatos.imagen.data.toString("base64")
+      );
     }
 
     const containerCards = `
