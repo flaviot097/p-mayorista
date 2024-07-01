@@ -34,7 +34,7 @@
             <form class="form-crear-producto" method="post" enctype="multipart/form-data">
 
                 <label for="" class="imagen">Imagen</label><br>
-                <input type="file" class="img-prod" id="" name="file"><br>
+                <input type="file" class="img-prod" id="" name="img"><br>
 
 
                 <button type="" class="btn-actualizar">Crear</button>
@@ -49,11 +49,11 @@
 <script src="./assets/js/plantilla-alerta-exitosa.js"></script>
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['img'])) {
     $target_dir = "./uploads/";
-    $target_file = $target_dir . basename($_FILES["file"]["name"]);
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        echo "El archivo " . htmlspecialchars(basename($_FILES["file"]["name"])) . " ha sido subido.";
+    $target_file = $target_dir . basename($_FILES["img"]["name"]);
+    if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+        echo "El archivo " . htmlspecialchars(basename($_FILES["img"]["name"])) . " ha sido subido.";
     } else {
         echo "Lo siento, hubo un error subiendo tu archivo.";
     }
