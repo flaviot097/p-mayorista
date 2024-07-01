@@ -31,26 +31,24 @@ async function renderCards(productos) {
     let imagenBase64 = "ruta/a/imagen_predeterminada.png"; // Ruta a una imagen predeterminada
 
     if (jsonDatos.imagen && jsonDatos.imagen.data) {
-      console.log("Datos de imagen BLOB recibidos:", jsonDatos.imagen.data);
-      imagenBase64 = jsonDatos.imagen.data;
-      console.log("Imagen convertida a Base64:", imagenBase64);
+      imagenBase64 = await bufferToBase64(jsonDatos.imagen.data);
     }
 
     const containerCards = `
             <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
                 <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
                     <form method="post" class="form-action-redirection" action="https://p-mayorista.onrender.com/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
-                        <input class="input-disabled" type="text" name="code">
+                        <input class="input-disabled" type="text" name="code" value="${jsonDatos.codigo}">
                         <div class="svg-icon mx-auto mb-4">
                             <img loading="lazy" src="${imagenBase64}" alt="" class="img-productos" id="${jsonDatos.codigo}">
                         </div>
                         <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
-                        <p id="${jsonDatos.codigo}" class="id-producto">codigo de producto:${jsonDatos.codigo}</p>
-                        <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}.</p>
-                        <p id="${jsonDatos.codigo}" class="proveedor"> Proveedor: ${jsonDatos.distribuidora}.</p>
+                        <p id="${jsonDatos.codigo}" class="id-producto">Código de producto: ${jsonDatos.codigo}</p>
+                        <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}</p>
+                        <p id="${jsonDatos.codigo}" class="proveedor">Proveedor: ${jsonDatos.distribuidora}</p>
                         <h6 id="${jsonDatos.codigo}" class="precio-producto">Precio: $${jsonDatos.precio} c/u</h6>
                     </form>
-                    <button id=${jsonDatos.codigo} class="btn-agregar-carrito">
+                    <button id="${jsonDatos.codigo}" class="btn-agregar-carrito">
                         <img width="32" height="30" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-trolley--v2.png" alt="shopping-trolley--v2" />
                     </button>
                 </div>
@@ -83,7 +81,6 @@ async function reproducirCard() {
   renderCards(nuevosProductos);
   contador += 8; // Actualizar el contador
 }
-
 async function cardsonload() {
   const productosIniciales = dataFilter.slice(contador, contador + 8);
   for (const producto of productosIniciales) {
