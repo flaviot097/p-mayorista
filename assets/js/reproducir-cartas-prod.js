@@ -69,9 +69,10 @@ async function renderCards(productos) {
 
 async function bufferToBase64(buffer) {
   return new Promise((resolve, reject) => {
-    // Convertir los datos de buffer a cadena Base64
-    const base64Image = Buffer.from(buffer).toString("base64");
-    resolve(`data:image/jpeg;base64,${base64Image}`);
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(new Blob([buffer]));
   });
 }
 
