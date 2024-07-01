@@ -28,33 +28,27 @@ function agregarProductoACarrito(imputvalue) {
 
 async function renderCards(productos) {
   for (const jsonDatos of productos) {
-    let imagenBase64 = "../../uploads/1718691069537.jpg"; // Ruta a una imagen predeterminada
-
-    if (jsonDatos.imagen && jsonDatos.imagen.data) {
-      imagenBase64 = await bufferToBase64(
-        jsonDatos.imagen.data.toString("base64")
-      );
-    }
+    const imagenBase64 = jsonDatos.imagen.data;
 
     const containerCards = `
-            <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
-                <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
-                    <form method="post" class="form-action-redirection" action="https://p-mayorista.onrender.com/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
-                        <input class="input-disabled" type="text" name="code" value="${jsonDatos.codigo}">
-                        <div class="svg-icon mx-auto mb-4">
-                            <img loading="lazy" src="${imagenBase64}" alt="" class="img-productos" id="${jsonDatos.codigo}">
-                        </div>
-                        <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
-                        <p id="${jsonDatos.codigo}" class="id-producto">Código de producto: ${jsonDatos.codigo}</p>
-                        <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}</p>
-                        <p id="${jsonDatos.codigo}" class="proveedor">Proveedor: ${jsonDatos.distribuidora}</p>
-                        <h6 id="${jsonDatos.codigo}" class="precio-producto">Precio: $${jsonDatos.precio} c/u</h6>
-                    </form>
-                    <button id="${jsonDatos.codigo}" class="btn-agregar-carrito">
-                        <img width="32" height="30" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-trolley--v2.png" alt="shopping-trolley--v2" />
-                    </button>
-                </div>
-            </div>`;
+      <div loading="lazy" class="wow fadeInUp" id="${jsonDatos.codigo}">
+        <div class="card card-body border-0 text-center shadow pt-5 tarjeta-productos">
+          <form method="post" class="form-action-redirection" action="https://p-mayorista.onrender.com/producto.php" id="${jsonDatos.codigo}" value="${jsonDatos.codigo}">
+            <input class="input-disabled" type="text" name="code" value="${jsonDatos.codigo}">
+            <div class="svg-icon mx-auto mb-4">
+              <img loading="lazy" src="${imagenBase64}" alt="" class="img-productos" id="${jsonDatos.codigo}">
+            </div>
+            <h5 class="fg-gray nombre-producto" id="${jsonDatos.codigo}">${jsonDatos.producto}</h5>
+            <p id="${jsonDatos.codigo}" class="id-producto">Código de producto: ${jsonDatos.codigo}</p>
+            <p class="fs-small" id="${jsonDatos.codigo}">${jsonDatos.descripcion}</p>
+            <p id="${jsonDatos.codigo}" class="proveedor">Proveedor: ${jsonDatos.distribuidora}</p>
+            <h6 id="${jsonDatos.codigo}" class="precio-producto">Precio: $${jsonDatos.precio} c/u</h6>
+          </form>
+          <button id="${jsonDatos.codigo}" class="btn-agregar-carrito">
+            <img width="32" height="30" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-trolley--v2.png" alt="shopping-trolley--v2" />
+          </button>
+        </div>
+      </div>`;
     const divCard = document.querySelector(".col-lg.contenedor-cartas");
     divCard.innerHTML += containerCards;
   }
@@ -65,31 +59,19 @@ async function renderCards(productos) {
 
 function bufferToBase64(buffer) {
   return new Promise((resolve, reject) => {
-    const blob = new Blob([buffer], { type: "image/jpeg" }); // Cambia 'image/jpeg' al tipo MIME correcto si es necesario
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
+    // No es necesario convertir a Blob si los datos ya son base64
+    resolve(buffer);
   });
 }
 
 async function reproducirCard() {
   const nuevosProductos = dataFilter.slice(contador, contador + 8);
-  for (const producto of nuevosProductos) {
-    if (producto.imagen && producto.imagen.data) {
-      producto.imagen.data = await bufferToBase64(producto.imagen.data);
-    }
-  }
   renderCards(nuevosProductos);
   contador += 8; // Actualizar el contador
 }
+
 async function cardsonload() {
   const productosIniciales = dataFilter.slice(contador, contador + 8);
-  for (const producto of productosIniciales) {
-    if (producto.imagen && producto.imagen.data) {
-      producto.imagen.data = await bufferToBase64(producto.imagen.data);
-    }
-  }
   renderCards(productosIniciales);
   contador += 8; // Actualizar el contador
 }
