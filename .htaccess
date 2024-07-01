@@ -7,8 +7,3 @@ Options -Indexes
 </FilesMatch>
 
 
-<Directory "/var/www/html/uploads">
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-</Directory>
