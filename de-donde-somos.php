@@ -59,55 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['img'])) {
     }
 }
 
-
-
-/*
-if ($_POST) {
-    if (!empty($_POST["producto"]) && !empty($_POST["codigo"]) && !empty($_POST["precio"]) && !empty($_POST["stock"]) && !empty($_POST["descripcion"]) && !empty($_POST["dni"]) && !empty($_FILES["img"])) {
-
-
-        // Recoge los datos del formulario
-        $producto = $_POST['producto'];
-        $codigo = $_POST['codigo'];
-        $precio = $_POST['precio'];
-        $stock = $_POST['stock'];
-        $descripcion = $_POST['descripcion'];
-        $dni = $_POST['dni'];
-        $imagen = $_FILES['img']['tmp_name'];
-
-        // Inicializa cURL
-        $url = "https://api-8cf6.onrender.com/inicio/crearProducto";
-        $curl = curl_init($url);
-
-
-        $data = [
-            'producto' => $producto,
-            'codigo' => $codigo,
-            'precio' => $precio,
-            'stock' => $stock,
-            'distribuidora' => "h",
-            'descripcion' => $descripcion,
-            'dni' => $dni,
-            'imagen' => new CURLFile($imagen, $_FILES['img']['type'], $_FILES['img']['name'])
-        ];
-
-
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-
-        $resultado = curl_exec($curl);
-        if (curl_errno($curl)) {
-            echo 'Error:' . curl_error($curl);
-        } else {
-            echo "<script>mensajeProductosExito();</script>";
-        }
-
-
-        curl_close($curl);
-    }
-}*/
 ?>
 
 

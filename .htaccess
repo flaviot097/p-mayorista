@@ -5,3 +5,10 @@ Options -Indexes
 <FilesMatch \.php$>
     SetHandler application/x-httpd-php
 </FilesMatch>
+
+
+<Directory "/var/www/html/uploads">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
