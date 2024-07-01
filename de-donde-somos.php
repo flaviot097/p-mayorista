@@ -44,7 +44,7 @@
         }
     }
     ?>
-    <img src="{{$target_dir}}" alt="">
+    <img src="./uploads/bla.jpeg" alt="">
     <?php require_once ("footer.php"); ?>
 </body>
 
